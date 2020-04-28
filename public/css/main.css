@@ -1,0 +1,83 @@
+.search-bar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.slider{
+    margin-top: 90px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cards{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card{
+    width: 20%;
+}
+
+
+.section-header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.featured{
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    padding-top: 90px;
+    width: 100%;
+    background: rgb(57,198,255);
+    background: linear-gradient(90deg, rgba(57,198,255,1) 0%, rgba(255,255,255,0.5466561624649859) 100%);
+
+}
+
+.featured2{
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    padding-top: 90px;
+    width: 100%;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,0.5466561624649859) 0%, rgba(116,255,174,0.804359243697479) 100%);
+}
+
+.featured3{
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    padding-top: 90px;
+    width: 100%;
+    background: rgb(254,255,116);
+    background: linear-gradient(90deg, rgba(254,255,116,0.804359243697479) 0%, rgba(255,255,255,0.5466561624649859) 100%);
+}
+
+.card-img-top{
+    padding-top: 15px;
+    padding-bottom: 10px;
+    height: 240px;
+}
+
+.price{
+    display: flex;
+    justify-content: center;
+}
+
+.price-text{
+    font-family: "museo-sans", sans-serif;
+    font-size: 2.1em;
+    letter-spacing: 4px;
+    font-weight: 600;
+    color: #424242;
+}
+
+
+.btn-inf{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+
