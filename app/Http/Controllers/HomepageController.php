@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Item;
 
 class HomepageController extends Controller {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -12,6 +18,7 @@ class HomepageController extends Controller {
      */
     public function index()
     {
-        return view('index');
+        $items = Item::all();
+        return view('index', compact('items'));
     }
 }
