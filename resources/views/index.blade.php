@@ -98,8 +98,8 @@
                         <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
                         </div>
                         <div class="btn-inf">
-                            <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                            <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
+                            <a href="{{ route('item.addToCart', ['id' => $mobile->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>
+                            <a href="#" type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></a>
                         </div>
                     </div>
 
@@ -150,8 +150,8 @@
                             <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
                         </div>
                         <div class="btn-inf">
-                            <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                            <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
+                            <a href="{{ route('item.addToCart', ['id' => $laptop->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>
+                            <a href="#" type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></a>
                         </div>
                     </div>
 
@@ -204,8 +204,8 @@
                             <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
                         </div>
                         <div class="btn-inf">
-                            <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                            <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
+                            <a href="{{ route('item.addToCart', ['id' => $laptop->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>
+                            <a href="#" type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></a>
                         </div>
                     </div>
 

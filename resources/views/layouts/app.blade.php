@@ -52,7 +52,7 @@
                         </li>
 
                         <li class="option">
-                            E-cart
+                            E-Cart
                         </li>
                         <li class="option">
                             Wish list
@@ -130,7 +130,9 @@
                             <div class="side">
 
                                 <div class="header-button">
-                                    <a href="#">E-cart</a>
+                                    <a href="{{ route('item.shoppingCart') }}">
+                                        E-cart {{Session::has('cart') ? Session::get('cart') -> totalQty : ''}}
+                                    </a>
                                 </div>
 
                                 <div class="header-button">
