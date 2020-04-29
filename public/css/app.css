@@ -11106,6 +11106,11 @@ body #account-menu .option {
   opacity: 0;
 }
 
+body #header-menu .option:hover,
+body #account-menu .option:hover {
+  color: #fff !important;
+}
+
 body #header-menu img,
 body #account-menu img {
   display: none;
@@ -11379,7 +11384,7 @@ body #account-menu.active .option {
 
 body #header-menu.active .option:hover,
 body #account-menu.active .option:hover {
-  color: #e72943 !important;
+  color: #fff !important;
 }
 
 body #header-menu.active .option a,
@@ -11951,8 +11956,7 @@ body .footer {
 }
 
 body .footer .row {
-  margin-top: 1em;
-  padding: 1em 1em;
+  padding: 0.25em 0.25em;
   text-align: center;
   color: #e72943 !important;
   font-weight: bold;

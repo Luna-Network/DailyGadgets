@@ -191,6 +191,10 @@ body {
 
         .option{
             opacity: 0;
+
+            &:hover {
+                color: #fff !important;
+            }
         }
 
         img {
@@ -341,7 +345,7 @@ body {
             align-items: center;
 
             &:hover {
-                color: #e72943 !important;
+                color: #fff !important;
             }
 
             a{
@@ -920,8 +924,7 @@ body {
         overflow: hidden;
 
         .row {
-            margin-top: 1em;
-            padding: 1em 1em;
+            padding: 0.25em 0.25em;
             text-align: center;
             color: #e72943 !important;
             font-weight: bold;

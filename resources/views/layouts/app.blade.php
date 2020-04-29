@@ -97,8 +97,8 @@
                                 <div class="dropdown">
                                     Today's special
 
-                                    <div class="to-drop">
-                                        <div class="drop-contain">  </div>
+                                    <div class="to-drop dropdown-menu">
+                                        <div class="drop-contain dropdown-item">  </div>
                                         <li>Computers</li>
                                         <li>Laptops</li>
                                         <li>Phones</li>
@@ -109,8 +109,8 @@
                                 <div class="dropdown">
                                     Sales
 
-                                    <div class="to-drop">
-                                        <div class="drop-contain"></div>
+                                    <div class="to-drop dropdown-menu">
+                                        <div class="drop-contain dropdown-item"></div>
                                         <li>Computers</li>
                                         <li>Laptops</li>
                                         <li>Phones</li>
@@ -219,26 +219,19 @@
 
 <section class="footer">
     <div class="row">
-        <img src="{{asset('imgs/logo.PNG')}}">
-    </div>
-    <div class="row">
-        <div class="clickable">
+        <p>
+            <img src="{{asset('imgs/logo.PNG')}}">
+        </p>
 
-        </div>
-    </div>
-    <div class="row">
-        <p><b>
-                Developers:
-        </p></b>
+        <h6>
+            Contact Developers
         <p>
-            Front-End --> Karolis Abramovicius (Client), Dovydas Pukinskis (Admin)
+            <a href="mailto:simonas@inspiringinterns.com">Simonas Simonavicius</a>, <a href="mailto:info@humancode.dev">Karolis Abramovicius</a>, <a href="mailto:markas.cherry@gmail.com">Markas Vysniauskas</a>, <a href="mailto:dovydaspukinskis@gmail.com">Dovydas Pukinskis</a>
+            </h6>
         </p>
         <p>
-            Back-End --> Simonas Stankevicius, Markas Visniauskas
+            @Copyright all rights reserved by Daily Gadgets LTD 2020
         </p>
-    </div>
-    <div class="row">
-        @Copyright all rights reserved by Daily Gadgets LTD 2020
     </div>
 </section>
 
