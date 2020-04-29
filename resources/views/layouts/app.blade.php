@@ -16,14 +16,14 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans Condensed' rel='stylesheet'>
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/main.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" />
 
 
-
+    @yield('css')
     <!-- Styles -->
-    <link href="css/app.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/db6f70a430.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -64,7 +64,7 @@
 
                     <div id="top-bar">
                         <div id="logo">
-                            <img src="./imgs/logo.png">
+                            <img src="{{asset('imgs/logo.png')}}">
                         </div>
                         <div class="menu" onclick="menu_toggle()">
                             <div class="hamburger"></div>
@@ -80,7 +80,7 @@
                         <div class="row">
                             <div id="logo">
                                 <a href="{{ url('/') }}">
-                                    <img src="./imgs/logo.png">
+                                    <img src="{{asset('imgs/logo.png')}}">
                                 </a>
                             </div>
                         </div>
@@ -154,6 +154,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">{{ __('Details') }}</a>
                         <a class="dropdown-item" href="#">{{ __('Your Orders') }}</a>
+                        <a class="dropdown-item" href="#">{{ __('Admin') }}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -174,7 +175,7 @@
 <!-- SLIDE OUT MENUS -->
 <ul id="header-menu">
     <li class="option close" onclick="header_menu()">
-        <img src="imgs/arrow-left.png">
+        <img src="{{asset('imgs/arrow-left.png')}}">
     </li>
     <li class="option">
         Laptops
@@ -192,7 +193,7 @@
 
 <ul id="account-menu" >
     <li class="option close" onclick="account_menu()" style="left: 0; right: unset;">
-        <img src="imgs/arrow-left.png" style="transform: rotate(0deg)">
+        <img src="{{asset('imgs/arrow-left.png')}}" style="transform: rotate(0deg)">
     </li>
     <li class="option">
         Acount details
@@ -214,7 +215,7 @@
 
 <section class="footer">
     <div class="row">
-        <img src="imgs/logo.PNG">
+        <img src="{{asset('imgs/logo.PNG')}}">
     </div>
     <div class="row">
         <div class="clickable">
@@ -241,7 +242,7 @@
     integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
     crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
-<script src="js/global.js"></script>
+<script src="{{asset('js/global.js')}}"></script>
 
 </body>
 </html>
