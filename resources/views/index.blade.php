@@ -64,7 +64,7 @@
 </div>
 <!--/.Carousel Wrapper-->
 <div class="section-header">
-    <h2>FEATURED PRODUCTS</h2>
+    <h2>FEATURED PHONES</h2>
 </div>
 <section class="featured">
         <div class="main index">
@@ -72,27 +72,26 @@
             <div class="cards">
 
 
-
+                @foreach($mobiles as $mobile)
 
                 <div class="card card-cascade narrower">
                     <div class="details"></div>
                     <!-- Card image -->
                     <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="./imgs/phone.jpg"
+                        <img class="card-img-top" src="{{ substr($mobile->images, 0, strpos($mobile->images, ';')) }} "
                              alt="Card image cap">
-
                     </div>
 
                     <!-- Card content -->
                     <div class="card-body card-body-cascade">
 
                         <!-- Label -->
-                        <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
+                        <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> {{ $mobile->brand }}</h5>
                         <!-- Title -->
-                        <h4 class="font-weight-bold card-title">Apple iPhone 11 Pro Max 64GB - Silver</h4>
+                        <h4 class="font-weight-bold card-title">{{ $mobile->title }}</h4>
                         <!-- Text -->
                         <div class="price">
-                            <p class="price-text">$987.99</p>
+                            <p class="price-text">£{{ $mobile->price }}</p>
                         </div>
                         <!-- Button -->
                         <div class="btn-inf">
@@ -106,124 +105,7 @@
 
                 </div>
 
-
-
-
-
-
-                <div class="card card-cascade narrower">
-                    <div class="details"></div>
-                    <!-- Card image -->
-                    <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="./imgs/phone.jpg"
-                             alt="Card image cap">
-
-                    </div>
-
-                    <!-- Card content -->
-                    <div class="card-body card-body-cascade">
-
-                        <!-- Label -->
-                        <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                        <!-- Title -->
-                        <h4 class="font-weight-bold card-title">Apple iPhone 11 Pro Max 64GB - Silver</h4>
-                        <!-- Text -->
-                        <div class="price">
-                            <p class="price-text">$987.99</p>
-                        </div>
-                        <!-- Button -->
-                        <div class="btn-inf">
-                            <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                        </div>
-                        <div class="btn-inf">
-                            <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                            <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
-                <div class="card card-cascade narrower">
-                    <div class="details"></div>
-                    <!-- Card image -->
-                    <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="./imgs/phone.jpg"
-                             alt="Card image cap">
-
-                    </div>
-
-                    <!-- Card content -->
-                    <div class="card-body card-body-cascade">
-
-                        <!-- Label -->
-                        <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                        <!-- Title -->
-                        <h4 class="font-weight-bold card-title">Apple iPhone 11 Pro Max 64GB - Silver</h4>
-                        <!-- Text -->
-                        <div class="price">
-                            <p class="price-text">$987.99</p>
-                        </div>
-                        <!-- Button -->
-                        <div class="btn-inf">
-                            <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                        </div>
-                        <div class="btn-inf">
-                            <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                            <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
-                <div class="card card-cascade narrower">
-                    <div class="details"></div>
-                    <!-- Card image -->
-                    <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="./imgs/phone.jpg"
-                             alt="Card image cap">
-
-                    </div>
-
-                    <!-- Card content -->
-                    <div class="card-body card-body-cascade">
-
-                        <!-- Label -->
-                        <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                        <!-- Title -->
-                        <h4 class="font-weight-bold card-title">Apple iPhone 11 Pro Max 64GB - Silver</h4>
-                        <!-- Text -->
-                        <div class="price">
-                            <p class="price-text">$987.99</p>
-                        </div>
-                        <!-- Button -->
-                        <div class="btn-inf">
-                            <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                        </div>
-                        <div class="btn-inf">
-                            <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                            <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
+                @endforeach
 
 
             </div>
@@ -232,7 +114,7 @@
 
 
 <div class="section-header">
-    <h2>FEATURED PRODUCTS</h2>
+    <h2>FEATURED LAPTOPS</h2>
 </div>
 <section class="featured2">
     <div class="main index">
@@ -242,156 +124,43 @@
 
 {{--ONE CARD STARTS--}}
 
-            <div class="card card-cascade narrower">
-                <div class="details"></div>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img class="card-img-top" src="./imgs/lap.jpg"
-                         alt="Card image cap">
+            @foreach($laptops as $laptop)
+
+                <div class="card card-cascade narrower">
+                    <div class="details"></div>
+                    <!-- Card image -->
+                    <div class="view view-cascade overlay">
+                        <img class="card-img-top" src="{{ substr($laptop->images, 0, strpos($laptop->images, ';')) }} "
+                             alt="Card image cap">
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade">
+
+                        <!-- Label -->
+                        <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> {{ $laptop->brand }}</h5>
+                        <!-- Title -->
+                        <h4 class="font-weight-bold card-title">{{ $laptop->title }}</h4>
+                        <!-- Text -->
+                        <div class="price">
+                            <p class="price-text">£{{ $laptop->price }}</p>
+                        </div>
+                        <!-- Button -->
+                        <div class="btn-inf">
+                            <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
+                        </div>
+                        <div class="btn-inf">
+                            <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
+                            <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
+                        </div>
+                    </div>
 
                 </div>
 
-                <!-- Card content -->
-                <div class="card-body card-body-cascade">
-
-                    <!-- Label -->
-                    <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                    <!-- Title -->
-                    <h4 class="font-weight-bold card-title">Acer Nitro 5 AN515-54 Black 15.6"</h4>
-                    <!-- Text -->
-                    <div class="price">
-                        <p class="price-text">$1254.99</p>
-                    </div>
-                    <!-- Button -->
-                    <div class="btn-inf">
-                        <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                    </div>
-                    <div class="btn-inf">
-                        <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                        <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                    </div>
-                </div>
-
-            </div>
+            @endforeach
 
 
 {{--ONE CARD FINISHED--}}
-
-
-
-            <div class="card card-cascade narrower">
-                <div class="details"></div>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img class="card-img-top" src="./imgs/lap.jpg"
-                         alt="Card image cap">
-
-                </div>
-
-                <!-- Card content -->
-                <div class="card-body card-body-cascade">
-
-                    <!-- Label -->
-                    <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                    <!-- Title -->
-                    <h4 class="font-weight-bold card-title">Acer Nitro 5 AN515-54 Black 15.6"</h4>
-                    <!-- Text -->
-                    <div class="price">
-                        <p class="price-text">$1254.99</p>
-                    </div>
-                    <!-- Button -->
-                    <div class="btn-inf">
-                        <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                    </div>
-                    <div class="btn-inf">
-                        <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                        <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-
-            <div class="card card-cascade narrower">
-                <div class="details"></div>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img class="card-img-top" src="./imgs/lap.jpg"
-                         alt="Card image cap">
-
-                </div>
-
-                <!-- Card content -->
-                <div class="card-body card-body-cascade">
-
-                    <!-- Label -->
-                    <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                    <!-- Title -->
-                    <h4 class="font-weight-bold card-title">Acer Nitro 5 AN515-54 Black 15.6"</h4>
-                    <!-- Text -->
-                    <div class="price">
-                        <p class="price-text">$1254.99</p>
-                    </div>
-                    <!-- Button -->
-                    <div class="btn-inf">
-                        <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                    </div>
-                    <div class="btn-inf">
-                        <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                        <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-
-            <div class="card card-cascade narrower">
-                <div class="details"></div>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img class="card-img-top" src="./imgs/lap.jpg"
-                         alt="Card image cap">
-
-                </div>
-
-                <!-- Card content -->
-                <div class="card-body card-body-cascade">
-
-                    <!-- Label -->
-                    <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                    <!-- Title -->
-                    <h4 class="font-weight-bold card-title">Acer Nitro 5 AN515-54 Black 15.6"</h4>
-                    <!-- Text -->
-                    <div class="price">
-                        <p class="price-text">$1254.99</p>
-                    </div>
-                    <!-- Button -->
-                    <div class="btn-inf">
-                        <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                    </div>
-                    <div class="btn-inf">
-                        <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                        <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         </div>
@@ -399,7 +168,7 @@
 </section>
 
 <div class="section-header">
-    <h2>FEATURED PRODUCTS</h2>
+    <h2>FEATURED TVs</h2>
 </div>
 <section class="featured3">
     <div class="main index">
@@ -409,155 +178,40 @@
 
 
 
-            <div class="card card-cascade narrower">
-                <div class="details"></div>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img class="card-img-top" src="./imgs/lap.jpg"
-                         alt="Card image cap">
+            @foreach($tvs as $tv)
+
+                <div class="card card-cascade narrower">
+                    <div class="details"></div>
+                    <!-- Card image -->
+                    <div class="view view-cascade overlay">
+                        <img class="card-img-top" src="{{ substr($tv->images, 0, strpos($tv->images, ';')) }} "
+                             alt="Card image cap">
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade">
+
+                        <!-- Label -->
+                        <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> {{ $tv->brand }}</h5>
+                        <!-- Title -->
+                        <h4 class="font-weight-bold card-title">{{ $tv->title }}</h4>
+                        <!-- Text -->
+                        <div class="price">
+                            <p class="price-text">£{{ $tv->price }}</p>
+                        </div>
+                        <!-- Button -->
+                        <div class="btn-inf">
+                            <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
+                        </div>
+                        <div class="btn-inf">
+                            <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
+                            <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
+                        </div>
+                    </div>
 
                 </div>
 
-                <!-- Card content -->
-                <div class="card-body card-body-cascade">
-
-                    <!-- Label -->
-                    <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                    <!-- Title -->
-                    <h4 class="font-weight-bold card-title">Acer Nitro 5 AN515-54 Black 15.6"</h4>
-                    <!-- Text -->
-                    <div class="price">
-                        <p class="price-text">$1254.99</p>
-                    </div>
-                    <!-- Button -->
-                    <div class="btn-inf">
-                        <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                    </div>
-                    <div class="btn-inf">
-                        <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                        <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-
-
-
-            <div class="card card-cascade narrower">
-                <div class="details"></div>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img class="card-img-top" src="./imgs/lap.jpg"
-                         alt="Card image cap">
-
-                </div>
-
-                <!-- Card content -->
-                <div class="card-body card-body-cascade">
-
-                    <!-- Label -->
-                    <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                    <!-- Title -->
-                    <h4 class="font-weight-bold card-title">Acer Nitro 5 AN515-54 Black 15.6"</h4>
-                    <!-- Text -->
-                    <div class="price">
-                        <p class="price-text">$1254.99</p>
-                    </div>
-                    <!-- Button -->
-                    <div class="btn-inf">
-                        <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                    </div>
-                    <div class="btn-inf">
-                        <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                        <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-
-            <div class="card card-cascade narrower">
-                <div class="details"></div>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img class="card-img-top" src="./imgs/lap.jpg"
-                         alt="Card image cap">
-
-                </div>
-
-                <!-- Card content -->
-                <div class="card-body card-body-cascade">
-
-                    <!-- Label -->
-                    <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                    <!-- Title -->
-                    <h4 class="font-weight-bold card-title">Acer Nitro 5 AN515-54 Black 15.6"</h4>
-                    <!-- Text -->
-                    <div class="price">
-                        <p class="price-text">$1254.99</p>
-                    </div>
-                    <!-- Button -->
-                    <div class="btn-inf">
-                        <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                    </div>
-                    <div class="btn-inf">
-                        <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                        <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-
-            <div class="card card-cascade narrower">
-                <div class="details"></div>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img class="card-img-top" src="./imgs/lap.jpg"
-                         alt="Card image cap">
-
-                </div>
-
-                <!-- Card content -->
-                <div class="card-body card-body-cascade">
-
-                    <!-- Label -->
-                    <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Phones</h5>
-                    <!-- Title -->
-                    <h4 class="font-weight-bold card-title">Acer Nitro 5 AN515-54 Black 15.6"</h4>
-                    <!-- Text -->
-                    <div class="price">
-                        <p class="price-text">$1254.99</p>
-                    </div>
-                    <!-- Button -->
-                    <div class="btn-inf">
-                        <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
-                    </div>
-                    <div class="btn-inf">
-                        <button type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></button>
-                        <button type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></button>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
+            @endforeach
 
 
 
@@ -565,8 +219,6 @@
     </div>
 </section>
 {{--        MAIN CONTENT END--}}
-
-
 
 
 

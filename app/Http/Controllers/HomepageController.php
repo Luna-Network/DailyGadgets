@@ -18,7 +18,10 @@ class HomepageController extends Controller {
      */
     public function index()
     {
-        $items = Item::all();
-        return view('index', compact('items'));
+        $mobiles = Item::where('type', 'mobile')->latest()->take(4)->get();
+        $laptops = Item::where('type', 'laptop')->latest()->take(4)->get();
+        $tvs = Item::where('type', 'TV')->latest()->take(4)->get();
+
+        return view('index', compact('mobiles', 'laptops', 'tvs'));
     }
 }
