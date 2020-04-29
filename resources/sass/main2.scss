@@ -207,6 +207,7 @@ body {
         flex-direction: column;
         padding: 0px !important;
         border-top: 2px solid #e72943;
+        z-index: 9;
 
         @media only screen and (min-width: 1300px){
             width: 20%;
@@ -520,11 +521,6 @@ body {
 
     //Re-usable stuff
     .main {
-
-        &.index {
-
-        }
-
         max-width: 1400px;
         width: calc(100% - 2em);
         margin: auto;
@@ -934,7 +930,7 @@ body {
                 margin-top: 0em;
             }
             img {
-                max-width: 30vh;
+                max-width: 15vh;
             }
             p {
                 width: 100%;
@@ -2003,3 +1999,15 @@ body {
 
 
 
+//Item cards
+
+.card-body{
+    flex-direction: column;
+    justify-content: flex-end;
+    display: flex;
+}
+
+h4.font-weight-bold.card-title {
+    flex: 1;
+    font-size: 1.2em;
+}

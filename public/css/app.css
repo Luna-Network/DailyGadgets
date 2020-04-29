@@ -11122,6 +11122,7 @@ body #account-menu.active {
   flex-direction: column;
   padding: 0px !important;
   border-top: 2px solid #e72943;
+  z-index: 9;
 }
 
 @media only screen and (min-width: 1300px) {
@@ -11962,7 +11963,7 @@ body .footer .row:nth-child(1) {
 }
 
 body .footer .row img {
-  max-width: 30vh;
+  max-width: 15vh;
 }
 
 body .footer .row p {
@@ -13175,5 +13176,16 @@ body .footer .row .f-center {
   100% {
     opacity: 1;
   }
+}
+
+.card-body {
+  flex-direction: column;
+  justify-content: flex-end;
+  display: flex;
+}
+
+h4.font-weight-bold.card-title {
+  flex: 1;
+  font-size: 1.2em;
 }
 
