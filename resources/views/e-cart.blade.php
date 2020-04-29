@@ -1,38 +1,65 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>E-CART</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    @if(Session::has('cart'))
-        <div>
-            <ul>
+@section('content')
+
+    <div class="spacing-top"></div>
+    <div class="container">
+        @if(Session::has('cart'))
+            <table id="cart" class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th style="width:50%">Product</th>
+                    <th style="width:10%">Price</th>
+                    <th style="width:8%">Quantity</th>
+                    <th style="width:22%" class="text-center">Subtotal</th>
+                    <th style="width:10%"></th>
+                </tr>
+                </thead>
+                <tbody>
+
                 @foreach($items as $item)
-                    <li>
-                        <span>Quantity: {{ $item['qty'] }} </span>
-                        <h3>Title: {{ $item['item']['title'] }} </h3>
-                        <h3>Price of item: {{ $item['price'] }} </h3>
-                        <div>
-{{--                            COULD BE DROPDOWN LIST TO CHOSE THE REAL QUANTITY OR REMOVE --}}
-                            <a href="{{ route('item.reduceByOne', ['id' => $item['item']['id']]) }}">REDUCE BY 1</a>
-                            <a href="{{ route('item.removeItem', ['id' => $item['item']['id']]) }}">REMOVE ITEM</a>
-                        </div>
-                    </li>
-                    <hr>
+                    <tr>
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-2 hidden-xs"><img src="{{ substr($item['item']['images'], 0, strpos($item['item']['images'], ';')) }}" width="100" height="100" alt="product image" class="img-responsive" /></div>
+                                <div class="col-sm-10 product">
+                                    <h4 class="nomargin">{{ $item['item']['title'] }}</h4>
+                                    <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Price">£{{ $item['item']['price'] }}</td>
+                        <td data-th="Quantity" class="quantity">
+                            <a href="{{ route('item.reduceByOne', ['id' => $item['item']['id']]) }}" type="button" class="btn btn-warning btn-sm"><i class="fas fa-minus"></i></a>
+                            <input type="number" class="form-control text-center" value="{{ $item['qty'] }}" readonly style="min-width: 40px"/>
+                            <a href="{{ route('item.increaseByOne', ['id' => $item['item']['id']]) }}" type="button" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a>
+                        </td>
+                        <td data-th="Subtotal" class="text-center">£{{ $item['price'] }}</td>
+                        <td class="actions" data-th="">
+                            <a href="{{ route('item.removeItem', ['id' => $item['item']['id']]) }}" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
                 @endforeach
-            </ul>
-            <h2>TOTAL PRICE: {{ $totalPrice }}</h2>
+                </tbody>
+                <tfoot>
+                <tr class="visible-xs">
+                    <td class="text-center"><strong>Total £{{ $totalPrice }}</strong></td>
+                </tr>
+                <tr>
+                    <td><a href="{{ route('home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td colspan="2" class="hidden-xs"></td>
+                    <td class="hidden-xs text-center"><strong>Total £{{ $totalPrice }}</strong></td>
+                    <td><a href="{{ route('checkout') }}" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                </tr>
+                </tfoot>
+            </table>
+            @else
+                <div style="width: 100%">
+                    <h1 style="text-align: center">Your e-cart is empty!</h1>
+                    <td><a href="{{ route('home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                </div>
+            @endif
+    </div>
 
-            <a href=" {{ route('checkout') }} " type="button">CHECK OUT</a>
-        </div>
-    @else
-        <h1>NO ITEMS IN E-CART</h1>
-    @endif
 
-</body>
-</html>
+@endsection()

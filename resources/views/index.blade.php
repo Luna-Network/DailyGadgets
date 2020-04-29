@@ -130,7 +130,7 @@
                     <div class="details"></div>
                     <!-- Card image -->
                     <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="{{ substr($laptop->images, 0, strpos($laptop->images, ';')) }} "
+                        <img class="card-img-top" src="{{ substr($laptop->images, 0, strpos($laptop->images, ';')) }}"
                              alt="Card image cap">
                     </div>
 
