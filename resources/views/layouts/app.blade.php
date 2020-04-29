@@ -22,9 +22,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" />
 
 
-    @yield('css')
+
+
     <!-- Styles -->
     <script src="https://kit.fontawesome.com/db6f70a430.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -239,12 +241,19 @@
         @Copyright all rights reserved by Daily Gadgets LTD 2020
     </div>
 </section>
+
 <script
     src="https://code.jquery.com/jquery-3.5.0.js"
     integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
     crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
+
 <script src="{{asset('js/global.js')}}"></script>
+
+
 
 </body>
 </html>

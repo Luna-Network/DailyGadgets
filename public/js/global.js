@@ -1,7 +1,4 @@
-$(document).ready(function () {
-    $('#dtBasicExample').DataTable();
-    $('.dataTables_length').addClass('bs-select');
-});
+
 
 function menu_toggle() {
     document.getElementById("account-menu").classList.remove("active");
