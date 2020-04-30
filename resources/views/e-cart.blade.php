@@ -46,20 +46,19 @@
                     <td class="text-center"><strong>Total £{{ $totalPrice }}</strong></td>
                 </tr>
                 <tr>
-                    <td><a href="{{ route('home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td><a href="{{ $lastURL }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                     <td colspan="2" class="hidden-xs"></td>
                     <td class="hidden-xs text-center"><strong>Total £{{ $totalPrice }}</strong></td>
                     <td><a href="{{ route('checkout') }}" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
                 </tr>
                 </tfoot>
             </table>
-            @else
-                <div style="width: 100%">
-                    <h1 style="text-align: center">Your e-cart is empty!</h1>
-                    <td><a href="{{ route('home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-                </div>
-            @endif
+        @else
+            <div style="width: 100%">
+                <h1 style="text-align: center">Your e-cart is empty!</h1>
+                <td><a href="{{ $lastURL }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+            </div>
+        @endif
     </div>
-
 
 @endsection()
