@@ -743,8 +743,8 @@ body {
             color:white;
             position: absolute;
             transform: translate(-15%, 0%);
-            border-right: 2px solid #fff;
-            border-left: 2px solid #fff;
+            // border-right: 2px solid #fff;
+            // border-left: 2px solid #fff;
             li {
                 text-align: left;
                 list-style-type: none;
@@ -778,13 +778,14 @@ body {
                 padding: 1em 2em 1em 2em;
             }
             .drop-contain {
-                background-color: #242143;
-                height: 1.1em;
+                background-color: #fff;
+                height: 1em;
                 width: 110%;
                 position: absolute;
                 display:inline-block;
                 top:0;
                 left: -1.2em;
+                border:unset;
             }
 
         }
@@ -2013,4 +2014,61 @@ body {
 h4.font-weight-bold.card-title {
     flex: 1;
     font-size: 1.2em;
+}
+
+
+//All listings page 
+
+.main.listings {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .card {
+        margin: 0.25em;
+        padding: 0.5em;
+        justify-content: space-between;
+        transform-style: preserve-3d;
+        transition: 0.6s;
+        min-width: 250px;
+
+        &:hover {
+            transform: scale(1.1);
+            z-index: 1;
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        }
+
+        .icon {
+            display: flex;
+            padding-left: 0.5em;
+            padding-right: 0.5em; 
+            align-items: center;
+
+            p {
+                margin: 0 0.25em;
+                padding: 0;
+            }
+        }
+
+        .title {
+            flex: 1;
+            font-size: 1.2em;
+        }
+        p, h1 {
+            padding-left: 0.5em;
+            padding-right: 0.5em; 
+        }
+
+        .sponsored {
+            clip-path: polygon(0% 0%, 100% 0, 90% 50%, 100% 100%, 0% 100%);
+            background: #00c851;
+            color: #fff;
+            width: fit-content;
+            padding: 0.25em 1em 0.25em 0.5em;
+        }
+    }
+}
+
+.main.centered {
+    text-align: center;
 }

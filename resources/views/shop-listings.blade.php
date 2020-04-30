@@ -1,15 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
+<style> 
+    span {
+        color: #ff3547;
+        font-weight: 500;
+    }
 
-    <div class="filter" style="width: 100%; margin-top: 150px; padding-left: 30%;">
+    .greenc {
+        color: #00c851;
+    }
+
+    .mgt {
+        margin-top: 1em;
+    }
+</style>
+    <div class="filter main" style="width: 100%; margin-top: 150px; padding-left: 30%;">
 
         <div class="filter-header">
             <div>
                 <i class="las la-filter"></i>
             </div>
             <div>
-                <h4>Filter</h4>
+                <h4 class="greenc">Filter</h4>
             </div>
             <div>
                 <i id="filterArrow" class="las la-angle-right"></i>
@@ -19,10 +32,10 @@
         <form action="/shop" method="POST" id="filterForm">
             @csrf
 
-            <input class="searchBar" type="text" placeholder="Search" name="search">
+            <input class="searchBar form-control mr-sm-2" type="text" placeholder="Search" name="search" style="max-width:40em;">
 
             <div>
-                <div>
+                <div class="mgt">
                     <span>Type of product</span>
                 </div>
                 <div>
@@ -58,7 +71,7 @@
             </div>
 
             <div>
-                <div>
+                <div class="mgt">
                     <div>
                         <span>BRAND</span>
                     </div>
@@ -83,12 +96,12 @@
                 </div>
             </div>
 
-            <div class="filter-btn">
-                <button type="submit">SEARCH</button>
+            <div  class="mgt">
+                <button type="submit" class="btn btn-outline-success btn-rounded btn-sm my-0 waves-effect waves-light">SEARCH</button>
             </div>
-
-            <div class="clear-btn" <?php if(isset($_POST['sectors']) || (isset($_POST['salary']) && $_POST['salary'] != '0') || (isset($_POST['jobType']) && $_POST['jobType'] != "any") || isset($_POST['industries'])) echo "style='display:flex;'"; ?>>
-                <a href="/shop">SHOW ALL</a>
+            <br/>
+            <div class="" <?php if(isset($_POST['sectors']) || (isset($_POST['salary']) && $_POST['salary'] != '0') || (isset($_POST['jobType']) && $_POST['jobType'] != "any") || isset($_POST['industries'])) echo "style='display:flex;'"; ?>>
+                <a href="/shop" class="btn btn-outline-success btn-rounded btn-sm my-0 waves-effect waves-light">SHOW ALL</a>
             </div>
 
         </form>
@@ -96,12 +109,16 @@
 
     <div class = "results">
         @if($totalResults == 0)
-            <h3>Sorry, no jobs found</h3>
+            <div class="main centered">
+                <h3>Sorry, no jobs found</h3>
+            </div>
         @else
-            <h5>Results found: {{ $totalResults }}</h5>
+            <div class="main centered">
+                <h5>Results found: {{ $totalResults }}</h5>
+            </div>
         @endif
     </div>
-
+<div class="main listings">
         @if(!is_null($items))
             @foreach($items[$page] as $item)
                 @if(is_null($item))
@@ -110,21 +127,26 @@
                 <div class = "card">
                     {{--SPONSORS HARD CODED--}}
                     <span class="sponsored">sponsored</span>
-                    <h1>{{ $item -> title }}</h1>
-                    <p class="desc">{{ $item->brand }}</p>
+                    <img class="card-img-top" src="{{ substr($item->images, 0, strpos($item->images, ';')) }} "
+                             alt="Card image cap">
 
-                    <div class="icon">
+                             <div class="icon">
                         <i class="fas fa-laptop"></i>
-                        <p>{{ $item -> price }}</p>
+                        <p>{{ $item -> brand }}</p>
                     </div>
+                    <h1 class="title">{{ $item -> title }}</h1>
+                    <p class="desc">£{{ $item-> price }}</p>
 
-                    <div class="apply-btn">
-                        <button>ADD TO CART</button>
+                    
+
+                    <div class="btn-inf">
+                        <a href="http://127.0.0.1:8000/add-to-cart/1" type="button" style="width: 50%" class="btn btn-success waves-effect waves-light"><i class="fas fa-cart-plus" style="font-size: 26px" aria-hidden="true"></i></a>
+                        <a href="#" type="button" style="width: 50%" class="btn btn-danger waves-effect waves-light"><i class="fas fa-heart" style="font-size: 26px" aria-hidden="true"></i></a>
                     </div>
                 </div>
             @endforeach
         @endif
-
+</div>
 
 
 

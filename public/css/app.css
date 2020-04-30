@@ -11779,8 +11779,6 @@ body .dropdown .to-drop {
   color: white;
   position: absolute;
   transform: translate(-15%, 0%);
-  border-right: 2px solid #fff;
-  border-left: 2px solid #fff;
 }
 
 body .dropdown .to-drop li {
@@ -11814,13 +11812,14 @@ body .dropdown .to-drop:hover {
 }
 
 body .dropdown .to-drop .drop-contain {
-  background-color: #242143;
-  height: 1.1em;
+  background-color: #fff;
+  height: 1em;
   width: 110%;
   position: absolute;
   display: inline-block;
   top: 0;
   left: -1.2em;
+  border: unset;
 }
 
 body .dropdown:hover .to-drop,
@@ -13191,5 +13190,64 @@ body .footer .row .f-center {
 h4.font-weight-bold.card-title {
   flex: 1;
   font-size: 1.2em;
+}
+
+.main.listings {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.main.listings .card {
+  margin: 0.25em;
+  padding: 0.5em;
+  justify-content: space-between;
+  transform-style: preserve-3d;
+  transition: 0.6s;
+  min-width: 250px;
+}
+
+.main.listings .card:hover {
+  transform: scale(1.1);
+  z-index: 1;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+}
+
+.main.listings .card .icon {
+  display: flex;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  align-items: center;
+}
+
+.main.listings .card .icon p {
+  margin: 0 0.25em;
+  padding: 0;
+}
+
+.main.listings .card .title {
+  flex: 1;
+  font-size: 1.2em;
+}
+
+.main.listings .card p,
+.main.listings .card h1 {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.main.listings .card .sponsored {
+  -webkit-clip-path: polygon(0% 0%, 100% 0, 90% 50%, 100% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 100% 0, 90% 50%, 100% 100%, 0% 100%);
+  background: #00c851;
+  color: #fff;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.25em 1em 0.25em 0.5em;
+}
+
+.main.centered {
+  text-align: center;
 }
 

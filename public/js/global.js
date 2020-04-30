@@ -107,6 +107,3 @@ function expand_contact(){
 }
 // functions for Account Settings page END
 
-
-
-
