@@ -10,7 +10,7 @@ use DB;
 class ShopController extends Controller {
 
     //Query builder
-    private function queryBuilder($searchWords, $type, $brand, $query) {
+    private function queryBuilder($searchWords, $type, $brand, $price, $query) {
         $used = false;
 
         //Build search query
@@ -50,6 +50,35 @@ class ShopController extends Controller {
             $used = true;
         }
 
+        //Building query for item brand
+        if($brand[0] != 'all') {
+            if($used) {
+                $query .= "AND (";
+            }
+            else {
+                $query .= "WHERE (";
+            }
+            for ($i = 0; $i < count($brand); $i++) {
+                if($i != 0) {
+                    $query .= ' OR ';
+                }
+                $query .= "items.brand = '$brand[$i]'";
+            }
+            $query .= ") ";
+            $used = true;
+        }
+
+        //Building query to show price limit
+        if($price > 0) {
+            if($used) {
+                $query .= "AND items.price <= '$price' ";
+            }
+            else {
+                $query .= "WHERE items.price >= '$price' ";
+            }
+            $used = true;
+        }
+
         return $query;
     }
 
@@ -73,29 +102,36 @@ class ShopController extends Controller {
 
         //Getting data from user input
         $type = $request->input('type');
-        $type = (is_null($type) ? 'any' : $type);      //if job sector was not selected, show all
+        $type = (is_null($type) ? 'any' : $type);      //if item type was not selected, show all
 
         $brand = $request->input('brand');
-        $brand[0] = (is_null($brand) ? 'all' : $brand[0]);      //if job sector was not selected, show all
+        $brand[0] = (is_null($brand) ? 'all' : $brand[0]);      //if item brand was not selected, show all
 
         $search = $request -> input('search');
 
         $search = preg_replace("/[^A-Za-z0-9]/", ',', $search); //removing special characters
         $searchWords = explode(',',  $search);
 
+        //HARD CODED FOR TESTING
+        $price = 0;
+
+        //!!!!!
+        //Last filter query to build is to either show or not available in stock
+        //!!!!!
+
         for($i = 0; $i < count($searchWords); $i++) {
             $searchWords[$i] = "%" . $searchWords[$i] ."%";
         }
 
         $query = "";
-        $query = $this -> queryBuilder($searchWords, $type, $brand, $query);
+        $query = $this -> queryBuilder($searchWords, $type, $brand, $price, $query);
         $orderBy = "ORDER BY items.created_at DESC";
 
         $items = DB::select("SELECT * FROM items " . $query . $orderBy);
         $totalResults = count($items);
         $items = $this->createPages($items);
 
-        //HARD CODED
+        //HARD CODED FOR TESTING
         $page = 0;
 
         return view('shop-listings', compact('items', 'totalResults', 'page'));
