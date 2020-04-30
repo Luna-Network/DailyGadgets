@@ -76,11 +76,10 @@ class ItemController extends Controller {
         if(substr(redirect()->back()->getTargetUrl(), -13) != "shopping-cart") {
             $lastURL = redirect()->back()->getTargetUrl();
         } else {
-
             $lastURL = "/";
         }
 
-        return view('e-cart', ['items' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+        return view('e-cart', ['items' => $cart->items, 'totalPrice' => $cart->totalPrice], compact($lastURL));
     }
 
     public function getCheckout() {
