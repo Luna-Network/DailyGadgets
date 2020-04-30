@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/item', 'ItemController@index');
-Route::get('/shop', 'ShopController@index');
+Route::get('/shop', 'ShopController@results');
+Route::post('/shop', 'ShopController@results');
 Route::get('/', 'HomepageController@index')->name('home');
 Route::resource('users', 'UserController');
 
