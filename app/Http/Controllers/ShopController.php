@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Item;
 
+use App\Item;
 class ShopController extends Controller {
 
     public function results(Request $request) {
@@ -16,14 +16,21 @@ class ShopController extends Controller {
         $brand = $request->input('brand');
         $brand[0] = (is_null($brand) ? 'all' : $brand[0]);      //if job sector was not selected, show all
 
+        $search = $request -> input('search');
 
-        $items = Item::where('type', '=', 'mobile');
-        $items->get();
+        $search = preg_replace("/[^A-Za-z0-9]/", ',', $search); //removing special characters
+        $searchWords = explode(',',  $search);
 
-        dd($items);
+        for($i = 0; $i < count($searchWords); $i++) {
+            $searchWords[$i] = "%" . $searchWords[$i] ."%";
+        }
 
 
-//        dd($items);
+
+        $items = Item::where('type', 'mobile')->latest()->paginate(4);
+
+        //dd($searchWords);
+
 
 //        if($type != 'any') {
 //            $items->orWhere('type', $type);
