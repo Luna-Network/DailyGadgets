@@ -62,6 +62,8 @@
     </a>
     <!--/.Controls-->
 </div>
+
+<div class="main">
 <!--/.Carousel Wrapper-->
 <div class="section-header">
     <h2>FEATURED PHONES</h2>
@@ -218,6 +220,7 @@
         </div>
     </div>
 </section>
+</div>
 {{--        MAIN CONTENT END--}}
 
 

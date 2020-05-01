@@ -11947,18 +11947,21 @@ body .footer {
   justify-content: left;
   background-color: #fff;
   border-top: 2px solid #e72943;
+  border-bottom: 2px solid #e72943;
+  margin-bottom: 2em;
+  padding: 0.5em 0;
   font-size: 0.8em;
   font-weight: bold;
   width: 100%;
   align-content: flex-start;
   overflow: hidden;
+  transform: scale(0.8);
 }
 
 body .footer .row {
   padding: 0.25em 0.25em;
   text-align: center;
   color: #e72943 !important;
-  font-weight: bold;
 }
 
 body .footer .row:nth-child(1) {
@@ -11975,7 +11978,6 @@ body .footer .row p {
 }
 
 body .footer .row b {
-  font-weight: bold;
   color: #e72943;
   font-size: 0.9em;
 }
