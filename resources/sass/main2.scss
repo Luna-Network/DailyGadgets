@@ -75,7 +75,7 @@ body {
     }
     #mobile-nav {
         width: 0% ;
-        top: 120px;
+        top: 87px;
         margin-top: -2em;
         height: calc(100% - 4em);
         left: 0;
@@ -87,6 +87,7 @@ body {
         z-index: 99;
         @media only screen and (min-width: 992px){
             display: none !important;
+            top: 120px;
         }
         .option{
             opacity: 0;

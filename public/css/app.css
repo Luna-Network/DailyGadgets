@@ -10971,7 +10971,7 @@ body #top-bar .menu .hamburger.active:nth-child(3) {
 
 body #mobile-nav {
   width: 0%;
-  top: 120px;
+  top: 87px;
   margin-top: -2em;
   height: calc(100% - 4em);
   left: 0;
@@ -10986,6 +10986,7 @@ body #mobile-nav {
 @media only screen and (min-width: 992px) {
   body #mobile-nav {
     display: none !important;
+    top: 120px;
   }
 }
 

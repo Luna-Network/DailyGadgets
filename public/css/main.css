@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    transform: scale(0.8);
+    transform: scale(0.85);
 }
 
 .card{
@@ -23,6 +23,35 @@
     margin: 1em;
 }
 
+@media only screen and (max-width:991px){
+    .cards {
+        transform: scale(0.9);
+        justify-content: center;
+    }
+    .card{
+        width: 40%;
+        min-width: unset;
+        margin:1em;
+    }
+    .card-img-top {
+        width: 90%;
+        margin: auto;
+    }
+
+    .carousel-inner {
+        display: none;
+    }
+
+    .featured {
+        padding-top: 0px !important;
+    }
+}
+
+@media only screen and (max-width:591px){
+    .card {
+        width: 80%;
+    }
+}
 
 .section-header{
     width: 100%;
@@ -60,7 +89,9 @@
 .card-img-top{
     padding-top: 15px;
     padding-bottom: 10px;
-    height: 240px;
+    /* height: 240px; */
+    width: 90%;
+    margin: auto;
 }
 
 .price{
@@ -222,4 +253,10 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 #card-errors{
     color: #fa755a;
+}
+
+
+.card .desc {
+    font-weight: bold;
+    font-size: 1.2em;
 }
