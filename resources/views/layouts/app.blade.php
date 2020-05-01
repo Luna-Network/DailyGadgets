@@ -38,9 +38,10 @@
                     <ul id="mobile-nav">
 
                         <!-- SEARCH BAR  -->
-                        <form type="submit" action="#" class="search">
-                            <input type="text" name="seachbar" class="searchbar" placeholder="looking for">
-                            <input type="submit" value="search" class="searchgo">
+                        <form action="/shop" method="POST" class="search">
+                            @csrf
+                            <input type="text" name="search" class="searchbar" placeholder="looking for..." >
+                            <button type="submit" class="searchgo">SEARCH</button>
                         </form>
 
                         <li class="option">
@@ -124,11 +125,13 @@
 
                             <!-- SEARCH BAR  -->
                             <div class="side">
-                                <form class="form-inline mr-auto search-bar">
-                                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                                <form action="/shop" method="POST" class="form-inline mr-auto search-bar">
+                                    @csrf
+                                    <input name="search" class="form-control mr-sm-2" type="text" placeholder="Looking for..." aria-label="Search">
                                     <button class="btn btn-outline-danger btn-rounded btn-sm my-0" type="submit">Search</button>
                                 </form>
                             </div>
+
 
 
                             <!-- RIGHT SIDE NAVIGATION -->
