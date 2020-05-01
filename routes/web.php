@@ -49,6 +49,8 @@ Route::get('/wishlist', function () {
 Route::get('/news', function () {
     return view('news');
 });
+//WISHLIST
+Route::get('/add-to-wish/{id}', 'WishlistController@getAddToWish')->name('addToWish');
 
 
 Route::get('/terms-conditions', function () {

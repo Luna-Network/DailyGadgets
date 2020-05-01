@@ -101,7 +101,7 @@
                         </div>
                         <div class="btn-inf">
                             <a href="{{ route('item.addToCart', ['id' => $mobile->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>
-                            <a href="#" type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></a>
+                            <a href="{{ route('addToWish', ['id' => $mobile->id]) }}" type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></a>
                         </div>
                     </div>
 
@@ -153,7 +153,7 @@
                         </div>
                         <div class="btn-inf">
                             <a href="{{ route('item.addToCart', ['id' => $laptop->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>
-                            <a href="#" type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></a>
+                            <a href="{{ route('addToWish', ['id' => $laptop->id]) }}" type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></a>
                         </div>
                     </div>
 
@@ -206,8 +206,8 @@
                             <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
                         </div>
                         <div class="btn-inf">
-                            <a href="{{ route('item.addToCart', ['id' => $laptop->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>
-                            <a href="#" type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></a>
+                            <a href="{{ route('item.addToCart', ['id' => $tv->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>
+                            <a href="{{ route('addToWish', ['id' => $tv->id]) }}" type="button" style="width: 50%" class="btn btn-danger"><i class="fas fa-heart" style="font-size: 26px"></i></a>
                         </div>
                     </div>
 
