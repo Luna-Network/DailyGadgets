@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use Illuminate\Http\Request;
 
 
@@ -13,7 +14,9 @@ class ItemController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view('item-inside');
+        $items = Item::latest()->get();
+
+        return view('items.items', compact('items'));
     }
 
     /**
@@ -21,9 +24,8 @@ class ItemController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('items.create');
     }
 
     /**
@@ -32,9 +34,29 @@ class ItemController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $validatedData = $request->validate([
+            'type' => 'required',
+            'title' => 'required|max:255',
+            'in_stock' => 'required',
+            'price' => 'required',
+            'brand' => 'nullable',
+            'description' => 'nullable',
+            'review' => 'nullable',
+            'dimensions' => 'nullable',
+            'processor' => 'nullable',
+            'os' => 'nullable',
+            'storage_capacity' => 'nullable',
+            'ram' => 'nullable',
+            'colour' => 'nullable',
+            'camera' => 'nullable',
+            'battery_capacity' => 'nullable',
+            'images' => 'nullable',
+        ]);
+
+        Item::create($validatedData);
+
+        return redirect('items')->with('success', 'New item was added');
     }
 
     /**
@@ -54,9 +76,9 @@ class ItemController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        $item =  Item::whereId($id)->first();
+        return view('items.edit',compact('item'));
     }
 
     /**
@@ -66,9 +88,29 @@ class ItemController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $validatedData = $request->validate([
+            'type' => 'required',
+            'title' => 'required|max:255',
+            'in_stock' => 'required',
+            'price' => 'required',
+            'brand' => 'nullable',
+            'description' => 'nullable',
+            'review' => 'nullable',
+            'dimensions' => 'nullable',
+            'processor' => 'nullable',
+            'os' => 'nullable',
+            'storage_capacity' => 'nullable',
+            'ram' => 'nullable',
+            'colour' => 'nullable',
+            'camera' => 'nullable',
+            'battery_capacity' => 'nullable',
+            'images' => 'nullable',
+        ]);
+
+        Item::whereId($id)->update($validatedData);
+
+        return redirect('items')->with('success', 'Item is successfully updated');
     }
 
     /**
@@ -77,8 +119,10 @@ class ItemController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        $item = Item::findOrFail($id);
+        $item->delete();
+
+        return redirect('items')->with('success', 'Item is successfully deleted');
     }
 }

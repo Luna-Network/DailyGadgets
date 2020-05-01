@@ -22,7 +22,7 @@ Route::resource('users', 'UserController');
 Auth::routes();
 
 
-Route::resource('items', 'ItemsController');
+Route::resource('items', 'ItemController');
 
 
 //Cart controller routes

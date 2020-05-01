@@ -133,7 +133,7 @@
                             <span class="checkmark"></span>
                         </label>
                         <label class="multiple">Xioami
-                            <input type="checkbox" name="brand[]" value="xioami" <?php if(isset($_POST['brand']) && in_array('xioami',$_POST['brand'])) echo "checked='checked'"; ?>/>
+                            <input type="checkbox" name="brand[]" value="Xioami" <?php if(isset($_POST['brand']) && in_array('Xioami',$_POST['brand'])) echo "checked='checked'"; ?>/>
                             <span class="checkmark"></span>
                         </label>
                         <label class="multiple">LG
