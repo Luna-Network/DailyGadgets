@@ -41,3 +41,16 @@ Route::post('/checkout', 'CartController@postCheckout')->name('checkout');
 //Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 
 
+//Karolio kosmosas
+Route::get('/wishlist', function () {
+    return view('wish-list');
+});
+
+Route::get('/news', function () {
+    return view('news');
+});
+
+
+Route::get('/terms-conditions', function () {
+    return view('terms-conditions');
+});

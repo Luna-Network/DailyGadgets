@@ -11562,7 +11562,7 @@ body .main {
   width: calc(100% - 2em);
   margin: auto;
   padding-bottom: 80px;
-  min-height: 800px;
+  min-height: 350px;
 }
 
 @media only screen and (max-width: 991px) {
