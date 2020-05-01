@@ -106,7 +106,9 @@ function expand_contact(){
     document.getElementById("block-contact").classList.toggle("active");
 }
 // functions for Account Settings page END
+<<<<<<< Updated upstream
 
+<<<<<<< Updated upstream
 var stripe = Stripe('pk_test_39ZWlPdrgvN6vzXGF8tJZPKu00Y2pqMlol');
 
 // Create an instance of Elements.
@@ -188,3 +190,7 @@ function stripeTokenHandler(token) {
     form.submit();
 
 }
+=======
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes

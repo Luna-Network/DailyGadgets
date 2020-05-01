@@ -32,6 +32,7 @@
         <form action="/shop" method="POST" id="filterForm">
             @csrf
 
+<<<<<<< Updated upstream
             <input class="searchBar form-control mr-sm-2" type="text" placeholder="Search" name="search" style="max-width:40em;">
 
             <div>
@@ -150,4 +151,6 @@
 
 
 
+=======
+>>>>>>> Stashed changes
 @endsection

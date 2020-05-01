@@ -89,7 +89,9 @@
 }
 
 .form-center{
-    width: 40%;
+    width: 90%;
+    min-width: 400px; 
+    max-width: 500px; 
 }
 
 .border-light{
