@@ -21,17 +21,20 @@ Route::resource('users', 'UserController');
 
 Auth::routes();
 
-//For shopping cart
 
-Route::get('/add-to-cart/{id}', 'ItemController@getAddToCart')->name('item.addToCart');
-Route::get('/shopping-cart', 'ItemController@getCart')->name('item.shoppingCart');
-Route::get('/reduce/{id}', 'ItemController@getReduceByOne')->name('item.reduceByOne');
-Route::get('/increase/{id}', 'ItemController@getIncreaseByOne')->name('item.increaseByOne');
-Route::get('/remove/{id}', 'ItemController@getRemoveItem')->name('item.removeItem');
+Route::resource('items', 'ItemsController');
+
+
+//Cart controller routes
+Route::get('/add-to-cart/{id}', 'CartController@getAddToCart')->name('item.addToCart');
+Route::get('/shopping-cart', 'CartController@getCart')->name('item.shoppingCart');
+Route::get('/reduce/{id}', 'CartController@getReduceByOne')->name('item.reduceByOne');
+Route::get('/increase/{id}', 'CartController@getIncreaseByOne')->name('item.increaseByOne');
+Route::get('/remove/{id}', 'CartController@getRemoveItem')->name('item.removeItem');
 
 //THESE CHECKOUT NOT WORKING (turn on only to display e-cart)
-Route::get('/checkout', 'ItemController@getCheckout')->name('checkout');
-Route::post('/checkout', 'ItemController@postCheckout')->name('checkout');
+Route::get('/checkout', 'CartController@getCheckout')->name('checkout');
+Route::post('/checkout', 'CartController@postCheckout')->name('checkout');
 
 //SIMONAS CHECKOUTS
 //Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
