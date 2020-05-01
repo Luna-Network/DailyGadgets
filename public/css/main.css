@@ -12,11 +12,15 @@
 .cards{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    transform: scale(0.8);
 }
 
 .card{
     width: 20%;
+    min-width: 250px;
+    margin: 1em;
 }
 
 
@@ -154,7 +158,6 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control {
-        width: 20%;
         display: inline !important;
     }
     .actions .btn {
@@ -207,9 +210,7 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 }
 
-.StripeElement--focus {
 
-}
 
 .StripeElement--invalid {
     border-color: #fa755a;
