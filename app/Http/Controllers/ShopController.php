@@ -74,7 +74,7 @@ class ShopController extends Controller {
                 $query .= "AND items.price <= '$price' ";
             }
             else {
-                $query .= "WHERE items.price >= '$price' ";
+                $query .= "WHERE items.price <= '$price' ";
             }
             $used = true;
         }
@@ -89,7 +89,7 @@ class ShopController extends Controller {
 
         $index = 0;
         while(count($old) > 0) {
-            for ($i = 0; $i < 10; $i++) {
+            for ($i = 0; $i < 12; $i++) {
                 $new[$index][$i] = array_shift($old);
             }
             $index++;
@@ -102,23 +102,22 @@ class ShopController extends Controller {
 
         //Getting data from user input
         $type = $request->input('type');
-        $type = (is_null($type) ? 'any' : $type);      //if item type was not selected, show all
+        $type = (is_null($type) ? 'any' : $type);               //if item type was not selected, show all
 
         $brand = $request->input('brand');
         $brand[0] = (is_null($brand) ? 'all' : $brand[0]);      //if item brand was not selected, show all
 
-        $search = $request -> input('search');
+        $price = $request->input('price');
+        $price = (is_null($price) ? 0 : $price);                //if maximum price was not selected, show all
 
+        $search = $request -> input('search');
         $search = preg_replace("/[^A-Za-z0-9]/", ',', $search); //removing special characters
         $searchWords = explode(',',  $search);
 
-        //HARD CODED FOR TESTING
-        $price = 0;
+        $page = $request -> input('page');                  //getting page current page index
+        $page = (is_null($page) ? 0 : $page);
 
-        //!!!!!
-        //Last filter query to build is to either show or not available in stock
-        //!!!!!
-
+        //Surround each input word with %
         for($i = 0; $i < count($searchWords); $i++) {
             $searchWords[$i] = "%" . $searchWords[$i] ."%";
         }
@@ -127,12 +126,10 @@ class ShopController extends Controller {
         $query = $this -> queryBuilder($searchWords, $type, $brand, $price, $query);
         $orderBy = "ORDER BY items.created_at DESC";
 
+        //Building a query
         $items = DB::select("SELECT * FROM items " . $query . $orderBy);
         $totalResults = count($items);
         $items = $this->createPages($items);
-
-        //HARD CODED FOR TESTING
-        $page = 0;
 
         return view('shop-listings', compact('items', 'totalResults', 'page'));
     }

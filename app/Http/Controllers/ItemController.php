@@ -19,7 +19,7 @@ class ItemController extends Controller {
         $cart->add($item, $item->id);
 
         $request->session()->put('cart', $cart);
-        return redirect()->route('home');
+        return redirect()->back();
     }
 
     public function getReduceByOne($id) {
@@ -86,6 +86,14 @@ class ItemController extends Controller {
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
+
+        foreach ($cart->items as $key => $cartItem) {
+            $DB_item = Item::find($key);
+            if ($DB_item -> in_stock < $cartItem['qty'])  {
+                return view('not-available', compact('DB_item'));
+            }
+        }
+
         $total = $cart->totalPrice;
         return view('checkout', ['total' => $total]);
     }
