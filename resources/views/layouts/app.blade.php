@@ -21,12 +21,14 @@
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" />
+    <!-- MDBootstrap Datatables  -->
+    <link href="datatables2.min.css" rel="stylesheet">
 
 
 
-
-    <!-- Styles -->
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="https://kit.fontawesome.com/db6f70a430.js" crossorigin="anonymous"></script>
+
 
 </head>
 <body>
@@ -246,6 +248,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
 <script src="{{asset('js/global.js')}}"></script>
 
+<!-- MDBootstrap Datatables  -->
+<script type="text/javascript" src="datatables2.min.js"></script>
 
 </body>
 </html>

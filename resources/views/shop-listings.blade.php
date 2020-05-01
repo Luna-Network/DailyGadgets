@@ -79,6 +79,7 @@
         <form action="/shop" method="POST" id="filterForm">
             @csrf
 
+
             <input class="searchBar form-control mr-sm-2" type="text" placeholder="Search" name="search" value="<?php echo isset($_POST['search']) ? $_POST['search'] : '' ?>">
 
             <div>

@@ -89,7 +89,9 @@
 }
 
 .form-center{
-    width: 40%;
+    width: 90%;
+    min-width: 400px; 
+    max-width: 500px; 
 }
 
 .border-light{
@@ -189,4 +191,34 @@ table.dataTable thead .sorting_desc_disabled:before {
     table#cart tfoot td .btn {
         display: block;
     }
+}
+
+
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+    background-color: white;
+    padding: 16px 16px;
+    border: 1px solid #ccc;
+    width: 500px;
+    margin-bottom: 10px;
+
+}
+
+.StripeElement--focus {
+
+}
+
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}
+
+#card-errors{
+    color: #fa755a;
 }

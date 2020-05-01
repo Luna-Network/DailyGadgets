@@ -28,7 +28,13 @@ Route::get('/shopping-cart', 'ItemController@getCart')->name('item.shoppingCart'
 Route::get('/reduce/{id}', 'ItemController@getReduceByOne')->name('item.reduceByOne');
 Route::get('/increase/{id}', 'ItemController@getIncreaseByOne')->name('item.increaseByOne');
 Route::get('/remove/{id}', 'ItemController@getRemoveItem')->name('item.removeItem');
+
+//THESE CHECKOUT NOT WORKING (turn on only to display e-cart)
 Route::get('/checkout', 'ItemController@getCheckout')->name('checkout');
 Route::post('/checkout', 'ItemController@postCheckout')->name('checkout');
+
+//SIMONAS CHECKOUTS
+//Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+//Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 
 
