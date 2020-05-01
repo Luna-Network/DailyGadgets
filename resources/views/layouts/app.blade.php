@@ -24,9 +24,9 @@
 
 
 
-
-    <!-- Styles -->
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="https://kit.fontawesome.com/db6f70a430.js" crossorigin="anonymous"></script>
+
 
 </head>
 <body>
