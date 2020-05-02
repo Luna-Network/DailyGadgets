@@ -3,11 +3,13 @@
 @section('content')
 
 <!-- Settings section  START -->
-<section class="settings">
-            <div class="section-title">
-                <div class="half-under">Your Account</div>
-            </div>
-
+<section class="settings main">
+<br><br>
+            <div class="section-header">
+                    <h2 style="color:#242143;">
+                        ACCOUNT SETTINGS
+                    </h2>
+                </div>
             <!-- NAME -->
             <div class="block-title" onclick="expand_name()">Manage Your Name</div>  
 
@@ -25,7 +27,7 @@
                 </div>
             </form>  
 
-            <!-- EMAIL -->
+            <!-- EMAIL --> 
             <div class="block-title" onclick="expand_email()">Manage Your Email Address</div>
 
             <form type="submit" action="#" class="block-defaults email-h block-visible" id="block-email">
