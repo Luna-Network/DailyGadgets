@@ -4,7 +4,7 @@
 
     <div class="spacing-top"></div>
     <div class="container">
-        @if(Session::has('wishlist'))
+        @if(count($items) > 0)
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                 <tr>
@@ -20,33 +20,25 @@
                     <tr>
                         <td data-th="Product">
                             <div class="row">
-                                <div class="col-sm-2 hidden-xs"><img src="{{ substr($item['item']['images'], 0, strpos($item['item']['images'], ';')) }}" width="100" height="100" alt="product image" class="img-responsive" /></div>
+                                <div class="col-sm-2 hidden-xs"><img src="{{ substr($item['images'], 0, strpos($item['images'], ';')) }}" width="100" height="100" alt="product image" class="img-responsive" /></div>
                                 <div class="col-sm-10 product">
-                                    <h4 class="nomargin">{{ $item['item']['title'] }}</h4>
-                                    <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                                    <h4 class="nomargin">{{ $item['title'] }}</h4>
+                                    <p>{{ \Illuminate\Support\Str::limit($item['description'], $limit = 100, $end = '...') }}</p>
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">£{{ $item['item']['price'] }}</td>
+                        <td data-th="Price">£{{ $item['price'] }}</td>
                         <td class="actions" data-th="">
-                            <a href="{{ route('item.removeItem', ['id' => $item['item']['id']]) }}" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
-                            <a href="{{ route('item.addItem', ['id' => $item['item']['id']]) }}" type="button" class="btn btn-success btn-sm"><i class="fa fa-trash-o">+</i></a>
+                            <a href="{{ route('item.addToCart', ['id' => $item['id']]) }}" type="button" class="btn btn-success btn-md"><i class="fas fa-cart-plus"></i></a>
+                            <a href="{{ route('removeFromWish', ['id' => $item['id']]) }}" type="button" class="btn btn-danger btn-md"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
                 <tfoot>
-                <tr class="visible-xs">
-                    <td class="text-center"><strong>Total £{{ $totalPrice }}</strong></td>
-                </tr>
                 <tr>
                     <td><a href="{{ $lastURL ?? '/' }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                     <td colspan="2" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center"><strong>Total £{{ $totalPrice }}</strong></td>
-                    <td>
-                        <a href="{{ route('checkout') }}" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
-                    
-                    </td>
                 </tr>
                 </tfoot>
             </table>

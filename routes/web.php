@@ -17,11 +17,13 @@ Route::get('/item', 'ItemController@index');
 Route::get('/shop', 'ShopController@results');
 Route::post('/shop', 'ShopController@results');
 Route::get('/', 'HomepageController@index')->name('home');
-Route::resource('users', 'UserController');
 
 Auth::routes();
 
+//Users CRUD
+Route::resource('users', 'UserController');
 
+//Items CRUD
 Route::resource('items', 'ItemController');
 
 
@@ -32,22 +34,25 @@ Route::get('/reduce/{id}', 'CartController@getReduceByOne')->name('item.reduceBy
 Route::get('/increase/{id}', 'CartController@getIncreaseByOne')->name('item.increaseByOne');
 Route::get('/remove/{id}', 'CartController@getRemoveItem')->name('item.removeItem');
 
-//SIMONAS CHECKOUTS
+//CHECKOUTS
 Route::get('/payment', 'CartController@getCheckout')->name('payment.index')->middleware('auth');
 Route::post('/payment', 'CartController@store')->name('payment.store');
-
 Route::get('/confirmation','CartController@getConfirmation')->name('confirmation');
 
-//Karolio kosmosas
-Route::get('/wishlist', function () {
-    return view('wish-list');
-});
+//WISHLIST
+Route::get('/wishlist', 'WishlistController@getWishlist')->name('getWishlist');
+Route::get('/add-to-wish/{id}', 'WishlistController@getAddToWish')->name('addToWish');
+Route::get('/remove-from-wish/{id}', 'WishlistController@getRemoveFromWish')->name('removeFromWish');
 
+
+
+
+
+//TO BE PUT IN CONTROLLERS
 Route::get('/news', function () {
     return view('news');
 });
-//WISHLIST
-Route::get('/add-to-wish/{id}', 'WishlistController@getAddToWish')->name('addToWish');
+
 
 
 Route::get('/terms-conditions', function () {

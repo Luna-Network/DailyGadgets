@@ -49,9 +49,7 @@ class CartController extends Controller {
 
             Session::forget('cart');
 
-
             return redirect()->route('home');
-
     }
 
 
@@ -126,7 +124,6 @@ class CartController extends Controller {
     }
 
     public function getCheckout() {
-        dd(Session::get('cart'));
         if (!Session::has('cart')) {
             return view('e-cart');
         }

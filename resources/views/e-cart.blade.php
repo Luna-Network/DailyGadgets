@@ -24,7 +24,7 @@
                                 <div class="col-sm-2 hidden-xs"><img src="{{ substr($item['item']['images'], 0, strpos($item['item']['images'], ';')) }}" width="100" height="100" alt="product image" class="img-responsive" /></div>
                                 <div class="col-sm-10 product">
                                     <h4 class="nomargin">{{ $item['item']['title'] }}</h4>
-                                    <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                                    <p>{{ \Illuminate\Support\Str::limit($item['item']['description'], $limit = 100, $end = '...') }}</p>
                                 </div>
                             </div>
                         </td>
