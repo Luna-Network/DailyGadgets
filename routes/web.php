@@ -44,6 +44,8 @@ Route::get('/wishlist', 'WishlistController@getWishlist')->name('getWishlist');
 Route::get('/add-to-wish/{id}', 'WishlistController@getAddToWish')->name('addToWish');
 Route::get('/remove-from-wish/{id}', 'WishlistController@getRemoveFromWish')->name('removeFromWish');
 
+route::get('/my-orders', 'OrderController@userOrders') -> name('myOrders');
+
 
 
 
