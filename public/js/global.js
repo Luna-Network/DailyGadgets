@@ -1,15 +1,15 @@
 
 
-function menu_toggle() {
-    document.getElementById("account-menu").classList.remove("active");
-
-    var menu = document.getElementsByClassName("hamburger");
-    menu[0].classList.toggle("active");
-    menu[1].classList.toggle("active");
-    menu[2].classList.toggle("active");
-
-    document.getElementById("mobile-nav").classList.toggle("active");
-}
+// function menu_toggle() {
+//     document.getElementById("account-menu").classList.remove("active");
+//
+//     var menu = document.getElementsByClassName("hamburger");
+//     menu[0].classList.toggle("active");
+//     menu[1].classList.toggle("active");
+//     menu[2].classList.toggle("active");
+//
+//     document.getElementById("mobile-nav").classList.toggle("active");
+// }
 
 
 function header_menu() {
@@ -188,3 +188,4 @@ function stripeTokenHandler(token) {
     form.submit();
 
 }
+

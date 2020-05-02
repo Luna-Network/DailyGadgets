@@ -125,8 +125,8 @@
 
 .form-center{
     width: 90%;
-    min-width: 400px; 
-    max-width: 500px; 
+    min-width: 400px;
+    max-width: 500px;
 }
 
 .border-light{
@@ -259,4 +259,63 @@ table.dataTable thead .sorting_desc_disabled:before {
 .card .desc {
     font-weight: bold;
     font-size: 1.2em;
+}
+
+.logo{
+    width: 200px;
+    height: 50px;
+}
+
+.navbar-nav{
+    margin-left: 50px;
+}
+
+.active a{
+    color: #e72943!important;
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link{
+    background-color: rgba(181,181,181,0.1)!important;
+}
+
+.nav-link{
+    color: black!important;
+    margin-right: 10px!important;
+}
+
+.logo{
+    width: 150px;
+}
+
+.navbar-links{
+    margin-right: 40px;
+}
+
+.navbar-toggler {
+    background-color: #e72943!important;
+}
+
+
+.fixer{
+    width: 100%;
+    text-align:center;
+    margin-top:130px;
+}
+.test{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    min-width:400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    border: 1px solid rgb(220,220,220);
+    border-radius:2px;
+    min-height:600px;
+    width:500px;
+}
+.input{
+    height:53px;
+    padding-left:15px;
+    font-size:16px;
 }

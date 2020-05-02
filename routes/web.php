@@ -32,14 +32,11 @@ Route::get('/reduce/{id}', 'CartController@getReduceByOne')->name('item.reduceBy
 Route::get('/increase/{id}', 'CartController@getIncreaseByOne')->name('item.increaseByOne');
 Route::get('/remove/{id}', 'CartController@getRemoveItem')->name('item.removeItem');
 
-//THESE CHECKOUT NOT WORKING (turn on only to display e-cart)
-Route::get('/checkout', 'CartController@getCheckout')->name('checkout');
-Route::post('/checkout', 'CartController@postCheckout')->name('checkout');
-
 //SIMONAS CHECKOUTS
-//Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
-//Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+Route::get('/payment', 'CartController@getCheckout')->name('payment.index')->middleware('auth');
+Route::post('/payment', 'CartController@store')->name('payment.store');
 
+Route::get('/confirmation','CartController@getConfirmation')->name('confirmation');
 
 //Karolio kosmosas
 Route::get('/wishlist', function () {

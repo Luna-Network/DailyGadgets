@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 use App\Item;
 
 class HomepageController extends Controller {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
