@@ -13310,3 +13310,11 @@ h4.font-weight-bold.card-title {
   padding: 0px !important;
 }
 
+.nav-item:hover a {
+  color: #e72943 !important;
+}
+
+.nav-item a {
+  transition: 0.6s;
+}
+
