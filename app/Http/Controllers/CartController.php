@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\Cart;
 use App\Item;
 use App\Mail\ConfirmationMail;
@@ -29,9 +30,9 @@ class CartController extends Controller {
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
 
+
+
         $total = $cart->totalPrice;
-
-
 
 
         try{
@@ -54,12 +55,30 @@ class CartController extends Controller {
 
     public function getConfirmation(){
 
-        $this->sendConfirmationEmail();
+        //$this->sendConfirmationEmail();
+
+        if (!Session::has('cart')) {
+            return view('e-cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        $user = Auth::user();
+
+        foreach ($cart->items as $key => $cartItem) {
+            Item::whereId($key)->decrement('in_stock', $cartItem['qty']);
+            Order::create(['user_id'=>$user->id, 'item_id'=>$key, 'qty'=>$cartItem['qty'], 'totalPrice' => $cartItem['price']]);
+
+            if(Item::whereId($key)->first()->in_stock < 4) {
+                //SEND EMAIL THAT STOCK IS LOW
+            }
+
+        }
 
         Session::forget('cart');
 
 
-            return redirect()->route('home');
+        return redirect()->route('home');
 
     }
 
@@ -135,6 +154,7 @@ class CartController extends Controller {
     }
 
     public function getCheckout() {
+
         if (!Session::has('cart')) {
             return view('e-cart');
         }
