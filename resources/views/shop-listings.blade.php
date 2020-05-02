@@ -2,6 +2,10 @@
 
 @section('content')
 <style>
+    body .main {
+        min-height: 0; !important;
+    }
+
     span {
         color: #ff3547;
         font-weight: 500;
@@ -15,10 +19,13 @@
         margin-top: 1em;
     }
 
+    .space-top {
+        margin-top: 50px;
+    }
+
     .filter {
         width: 100%;
-        padding-top: 10%;
-        padding-left: 20%;
+        padding: 5% 20% 0 20%;
     }
 
     .pagination {
@@ -61,7 +68,82 @@
         border-bottom: rgba(46, 156, 250, 0.77) solid 1px;
     }
 
+    .multiple {
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 14px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .multiple input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 16px;
+        width: 16px;
+        border: 2px solid #d5d5d5;
+        transition-duration: 200ms;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .multiple:hover input ~ .checkmark {
+        background-color: rgba(0, 255, 112, 0.36);
+        transition-duration: 100ms;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .multiple input:checked ~ .checkmark {
+        background-color: #00c851;
+        border: 0;
+        height: 16px;
+        width: 16px;
+        transition-duration: 200ms;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .multiple input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .multiple .checkmark:after {
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+
 </style>
+
     <div class="filter main">
 
         <div class="filter-header">
@@ -82,44 +164,21 @@
 
             <input class="searchBar form-control mr-sm-2" type="text" placeholder="Search" name="search" value="<?php echo isset($_POST['search']) ? $_POST['search'] : '' ?>">
 
-            <div>
-                <div class="mgt">
-                    <span>Type of product</span>
-                </div>
-                <div>
-                    <label class="solo">Any
-                        <input type="radio" name="type" value="any" checked="checked">
-                        <span class="radiomark"></span>
-                    </label>
-                    <label class="solo">Laptop
-                        <input type="radio" name="type" value="laptop" <?php if(isset($_POST['type']) && $_POST['type'] == "laptop") echo "checked='checked'"; ?>/>
-                        <span class="radiomark"></span>
-                    </label>
-                    <label class="solo">PC
-                        <input type="radio" name="type" value="pc" <?php if(isset($_POST['type']) && $_POST['type'] == "pc") echo "checked='checked'"; ?>/>
-                        <span class="radiomark"></span>
-                    </label>
-                    <label class="solo">Mobile
-                        <input type="radio" name="type" value="mobile" <?php if(isset($_POST['type']) && $_POST['type'] == "mobile") echo "checked='checked'"; ?>/>
-                        <span class="radiomark"></span>
-                    </label>
-                    <label class="solo">TV
-                        <input type="radio" name="type" value="TV" <?php if(isset($_POST['type']) && $_POST['type'] == "TV") echo "checked='checked'"; ?>/>
-                        <span class="radiomark"></span>
-                    </label>
-                    <label class="solo">Headphones
-                        <input type="radio" name="type" value="headphones" <?php if(isset($_POST['type']) && $_POST['type'] == "headphones") echo "checked='checked'"; ?>/>
-                        <span class="radiomark"></span>
-                    </label>
-                    <label class="solo">Other
-                        <input type="radio" name="type" value="other" <?php if(isset($_POST['type']) && $_POST['type'] == "other") echo "checked='checked'"; ?>/>
-                        <span class="radiomark"></span>
-                    </label>
-                </div>
-            </div>
 
-            <div>
-                <div class="mgt">
+            <select class="browser-default custom-select space-top" name="type">
+                <option value="any" <?php if(isset($_POST['type']) && $_POST['type'] == "any") echo "selected"; ?>>Any</option>
+                <option value="laptop" <?php if(isset($_POST['type']) && $_POST['type'] == "laptop") echo "selected"; ?>>Laptop</option>
+                <option value="pc" <?php if(isset($_POST['type']) && $_POST['type'] == "pc") echo "selected"; ?>>PC</option>
+                <option value="mobile"<?php if(isset($_POST['type']) && $_POST['type'] == "mobile") echo "selected"; ?>>Mobile</option>
+                <option value="tv" <?php if(isset($_POST['type']) && $_POST['type'] == "tv") echo "selected"; ?>>TV</option>
+                <option value="headphones" <?php if(isset($_POST['type']) && $_POST['type'] == "headphones") echo "selected"; ?>>Headphones</option>
+                <option value="other" <?php if(isset($_POST['type']) && $_POST['type'] == "other") echo "selected"; ?>>Other</option>
+            </select>
+
+
+
+            <div class="space-top">
+                <div>
                     <div>
                         <span>BRAND</span>
                     </div>
@@ -144,27 +203,29 @@
                 </div>
             </div>
 
-            <div>
-                <div class="mgt">
-                    <div>
-                        <span>MAX PRICE</span>
-                    </div>
-                    <div>
-                        <label class="solo">
-                            <input type="text" name="price" placeholder="Max price" value="<?php echo isset($_POST['price']) ? $_POST['price'] : '' ?>" />
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+
+
+            <div class="mgt">
+                <div>
+                    <span>MAX PRICE</span>
+                </div>
+                <div>
+                    <label class="solo">
+                        <input type="text" name="price" placeholder="Max price" value="<?php echo isset($_POST['price']) ? $_POST['price'] : '' ?>" />
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
             </div>
 
-            <div  class="mgt">
+            <div class="mgt">
                 <button type="submit" class="btn btn-outline-success btn-rounded btn-sm my-0 waves-effect waves-light">SEARCH</button>
             </div>
+
             <br/>
-            <div class="" <?php if(isset($_POST['sectors']) || (isset($_POST['salary']) && $_POST['salary'] != '0') || (isset($_POST['jobType']) && $_POST['jobType'] != "any") || isset($_POST['industries'])) echo "style='display:flex;'"; ?>>
-                <a href="/shop" class="btn btn-outline-success btn-rounded btn-sm my-0 waves-effect waves-light">SHOW ALL</a>
+            <div class="mgt" <?php if(isset($_POST['sectors']) || (isset($_POST['salary']) && $_POST['salary'] != '0') || (isset($_POST['jobType']) && $_POST['jobType'] != "any") || isset($_POST['industries'])) echo "style='display:flex;'"; ?>>
+                <a href="/shop" class="btn btn-outline-danger btn-rounded btn-sm my-0 waves-effect waves-light">SHOW ALL</a>
             </div>
+
 
         </form>
     </div>
