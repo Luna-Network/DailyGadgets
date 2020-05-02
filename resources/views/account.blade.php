@@ -17,11 +17,15 @@
                 @csrf
                 <div class="inblock-row1">
                     Your currently stored name:
-                    <br> <b>{{ $user -> name }}</b>
+                    <br> <b>{{ $user -> name }} {{ $user -> second_name }}</b>
                 </div>
                 <div class="inblock-rowX">
-                    <div class="row-title">New name:</div>
+                    <div class="row-title">New Name:</div>
                     <input type="text" name="name" class="row-input" required>
+                </div>
+                <div class="inblock-rowX">
+                    <div class="row-title">New Second Name:</div>
+                    <input type="text" name="second_name" class="row-input" required>
                 </div>
                 <div class="inblock-rowZ">
                     <input type="submit" value="Save" class="acc-save-btn" />
