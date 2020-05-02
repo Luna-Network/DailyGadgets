@@ -40,21 +40,23 @@ Route::post('/payment', 'CartController@store')->name('payment.store');
 Route::get('/confirmation','CartController@getConfirmation')->name('confirmation');
 
 //WISHLIST
-Route::get('/wishlist', 'WishlistController@getWishlist')->name('getWishlist');
-Route::get('/add-to-wish/{id}', 'WishlistController@getAddToWish')->name('addToWish');
-Route::get('/remove-from-wish/{id}', 'WishlistController@getRemoveFromWish')->name('removeFromWish');
+Route::get('/wishlist', 'WishlistController@getWishlist')->name('getWishlist')->middleware('auth');
+Route::get('/add-to-wish/{id}', 'WishlistController@getAddToWish')->name('addToWish')->middleware('auth');
+Route::get('/remove-from-wish/{id}', 'WishlistController@getRemoveFromWish')->name('removeFromWish')->middleware('auth');
 
-route::get('/my-orders', 'OrderController@userOrders') -> name('myOrders');
+//YOUR ORDERS
+route::get('/my-orders', 'OrderController@userOrders') -> name('myOrders')->middleware('auth');
+
+//ACCOUNT MANAGEMENT ROUTES
+Route::get('/account', 'AccountController@getAccount') -> name('getAccount');
+Route::post('/account', 'AccountController@postAccount') -> name('postAccount');
 
 
 
 
-
-//TO BE PUT IN CONTROLLERS
 Route::get('/news', function () {
     return view('news');
 });
-
 
 
 Route::get('/terms-conditions', function () {
@@ -69,9 +71,6 @@ Route::get('/contact', function () {
     return view('contact-us');
 });
 
-Route::get('/account', function () {
-    return view('account');
-});
 
 Route::get('/email', function () {
     return new \App\Mail\ConfirmationMail();

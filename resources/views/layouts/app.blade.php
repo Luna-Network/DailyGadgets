@@ -45,7 +45,7 @@
 <header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark white scrolling-navbar">
-        <a class="navbar-brand" href="#"><img class="logo" src="{{asset('imgs/logo.png')}}"></a>
+        <a class="navbar-brand" href="{{ route('home') }}"><img class="logo" src="{{asset('imgs/logo.png')}}"></a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Whish List</a>
+                    <a class="nav-link" href="{{ route('getWishlist') }}">Wish List</a>
                 </li>
                 @guest
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -94,7 +94,7 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu6">
                             <a class="dropdown-item" href="/account">{{ __('Details') }}</a>
-                            <a class="dropdown-item" href="#">{{ __('Your Orders') }}</a>
+                            <a class="dropdown-item" href="{{route('myOrders')}}">{{ __('Your Orders') }}</a>
                             <a class="dropdown-item" href="#">{{ __('Admin') }}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
