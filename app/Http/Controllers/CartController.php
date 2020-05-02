@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Item;
+use App\Mail\ConfirmationMail;
+use Cartalyst\Stripe\Exception\CardErrorException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 Use Session;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
@@ -27,6 +31,9 @@ class CartController extends Controller {
 
         $total = $cart->totalPrice;
 
+
+
+
         try{
             $charge = Stripe::charges()->create([
                 'amount' => $total,
@@ -40,16 +47,20 @@ class CartController extends Controller {
             ]);
 
             return redirect()->route('confirmation');
-        }catch (Exception $e){
-
+        }catch (CardErrorException $e){
+            return back()->withErrors('Error' . $e->getMessage());
         }
     }
 
     public function getConfirmation(){
 
-            Session::forget('cart');
+        $this->sendConfirmationEmail();
+
+        Session::forget('cart');
+
 
             return redirect()->route('home');
+
     }
 
 
@@ -139,5 +150,10 @@ class CartController extends Controller {
 
         $total = $cart->totalPrice;
         return view('checkout', ['total' => $total]);
+    }
+
+    public function sendConfirmationEmail(){
+        $user = Auth::user();
+        Mail::to($user->email)->send(new ConfirmationMail());
     }
 }

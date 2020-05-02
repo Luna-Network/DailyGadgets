@@ -58,3 +58,19 @@ Route::get('/news', function () {
 Route::get('/terms-conditions', function () {
     return view('terms-conditions');
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/contact', function () {
+    return view('contact-us');
+});
+
+Route::get('/account', function () {
+    return view('account');
+});
+
+Route::get('/email', function () {
+    return new \App\Mail\ConfirmationMail();
+});

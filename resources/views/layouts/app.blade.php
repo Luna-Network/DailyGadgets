@@ -56,13 +56,13 @@
                     <a class="nav-link" href="/shop">Shop <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Contact</a>
+                    <a class="nav-link" href="/contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
+                    <a class="nav-link" href="/news">News</a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-auto">
@@ -93,7 +93,7 @@
                             {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu6">
-                            <a class="dropdown-item" href="#">{{ __('Details') }}</a>
+                            <a class="dropdown-item" href="/account">{{ __('Details') }}</a>
                             <a class="dropdown-item" href="#">{{ __('Your Orders') }}</a>
                             <a class="dropdown-item" href="#">{{ __('Admin') }}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"

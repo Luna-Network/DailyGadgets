@@ -2021,7 +2021,7 @@ h4.font-weight-bold.card-title {
 }
 
 
-//All listings page 
+//All listings page
 
 .main.listings {
     display: flex;
@@ -2045,7 +2045,7 @@ h4.font-weight-bold.card-title {
         .icon {
             display: flex;
             padding-left: 0.5em;
-            padding-right: 0.5em; 
+            padding-right: 0.5em;
             align-items: center;
 
             p {
@@ -2060,7 +2060,7 @@ h4.font-weight-bold.card-title {
         }
         p, h1 {
             padding-left: 0.5em;
-            padding-right: 0.5em; 
+            padding-right: 0.5em;
         }
 
         .sponsored {
@@ -2076,3 +2076,46 @@ h4.font-weight-bold.card-title {
 .main.centered {
     text-align: center;
 }
+
+// ABOUT US PAGE START
+
+.section1{
+    display:flex;
+    flex-direction:row !important;
+    @media only screen and (max-width:991px){
+        flex-direction:column !important;
+        text-align: center;
+    }
+    .image-block{
+        width: 400px;
+        height: 400px;
+        border-radius: 10px;
+        @media only screen and (max-width:991px){
+            width: 300px;
+            height: 300px;
+        }
+    }
+}
+.short{
+    flex:1;
+    height:100%;
+    padding: 70px 0px;
+    @media only screen and (max-width:991px){
+        padding: 30px;
+    }
+}
+.long{
+    flex:2;
+    height:100%;
+    padding: 100px 0px;
+    @media only screen and (max-width:991px){
+        flex-direction:column;
+        flex:1;
+        padding: 0px;
+    }
+}
+.overwrite{
+    padding: 0px !important;
+}
+
+// ABOUT US PAGE END

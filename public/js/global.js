@@ -62,7 +62,6 @@ function expand_name(){
     document.getElementById("block-email").classList.remove("active");
     document.getElementById("block-password").classList.remove("active");
     document.getElementById("block-address").classList.remove("active");
-    document.getElementById("block-bank").classList.remove("active");
     document.getElementById("block-contact").classList.remove("active");
 }
 function expand_email(){
@@ -70,7 +69,6 @@ function expand_email(){
     document.getElementById("block-email").classList.toggle("active");
     document.getElementById("block-password").classList.remove("active");
     document.getElementById("block-address").classList.remove("active");
-    document.getElementById("block-bank").classList.remove("active");
     document.getElementById("block-contact").classList.remove("active");
 }
 function expand_password(){
@@ -78,7 +76,6 @@ function expand_password(){
     document.getElementById("block-email").classList.remove("active");
     document.getElementById("block-password").classList.toggle("active");
     document.getElementById("block-address").classList.remove("active");
-    document.getElementById("block-bank").classList.remove("active");
     document.getElementById("block-contact").classList.remove("active");
 }
 function expand_address(){
@@ -86,7 +83,6 @@ function expand_address(){
     document.getElementById("block-email").classList.remove("active");
     document.getElementById("block-password").classList.remove("active");
     document.getElementById("block-address").classList.toggle("active");
-    document.getElementById("block-bank").classList.remove("active");
     document.getElementById("block-contact").classList.remove("active");
 }
 function expand_bank(){
@@ -94,7 +90,6 @@ function expand_bank(){
     document.getElementById("block-email").classList.remove("active");
     document.getElementById("block-password").classList.remove("active");
     document.getElementById("block-address").classList.remove("active");
-    document.getElementById("block-bank").classList.toggle("active");
     document.getElementById("block-contact").classList.remove("active");
 }
 function expand_contact(){
@@ -102,7 +97,6 @@ function expand_contact(){
     document.getElementById("block-email").classList.remove("active");
     document.getElementById("block-password").classList.remove("active");
     document.getElementById("block-address").classList.remove("active");
-    document.getElementById("block-bank").classList.remove("active");
     document.getElementById("block-contact").classList.toggle("active");
 }
 // functions for Account Settings page END
