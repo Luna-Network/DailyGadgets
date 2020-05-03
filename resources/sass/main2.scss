@@ -2172,3 +2172,57 @@ h4.font-weight-bold.card-title {
         font-size: 0.8em;
     }
 }
+
+//ITEMS INNER PAGE
+
+.p-4 {
+    color: #000;
+}
+
+.col-md-6.mb-4 {
+    .title {
+        color: #e72943;
+    }
+}
+
+.col-md-12.text-center {
+    color: #000 !important;
+}
+
+
+//WISH LIST, E-CART
+@media only screen and (max-width:991px){
+    table#cart tbody tr td:first-child {
+        background: #fff !important;
+    }
+
+    table#cart tbody td:before {
+        color: #e72943 !important;
+    }
+
+    .col-sm-2.hidden-xs {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 1em 0em;
+    }
+
+    td .row {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    td.actions {
+        display: flex !important;
+        justify-content: space-around !important;
+    }
+
+    table#cart tbody td.actions:before {
+        width: 0px !important;
+        display: none !important;
+    }
+
+    td.quantity .btn {
+        width: 100%;
+    }
+}
