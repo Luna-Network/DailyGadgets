@@ -37,7 +37,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td><a href="{{ $lastURL ?? '/' }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td><a href="{{ $lastURL ?? '/' }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Back</a></td>
                     <td colspan="2" class="hidden-xs"></td>
                 </tr>
                 </tfoot>
@@ -45,7 +45,7 @@
         @else
             <div style="width: 100%">
                 <h1 style="text-align: center">Your wish list is empty!</h1>
-                <td><a href="{{ $lastURL ?? '/' }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                <td><a href="{{ $lastURL ?? '/' }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Back</a></td>
             </div>
         @endif
     </div>

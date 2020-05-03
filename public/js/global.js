@@ -1,4 +1,28 @@
 
+if(window.location.href.includes("shop")){
+    document.getElementById("nav1").parentElement.classList.add("active");
+}
+else if(window.location.href.includes("about")){
+    document.getElementById("nav2").parentElement.classList.add("active");
+}
+else if(window.location.href.includes("contact")){
+    document.getElementById("nav3").parentElement.classList.add("active");
+}
+else if(window.location.href.includes("news")){
+    document.getElementById("nav4").parentElement.classList.add("active");
+}
+else if(window.location.href.includes("shopping-cart")){
+    document.getElementById("nav5").parentElement.classList.add("active");
+}
+else if(window.location.href.includes("wishlist")){
+    document.getElementById("nav6").parentElement.classList.add("active");
+}
+else if(window.location.href.includes("login")){
+    document.getElementById("nav7").parentElement.classList.add("active");
+}
+else if(window.location.href.includes("register")){
+    document.getElementById("nav8").parentElement.classList.add("active");
+}
 
 // function menu_toggle() {
 //     document.getElementById("account-menu").classList.remove("active");
@@ -141,7 +165,6 @@ form.addEventListener('submit', function(event) {
         address_line1: document.getElementById('address').value,
         address_city: document.getElementById('city').value,
         address_state: document.getElementById('province').value,
-        address_zip: document.getElementById('postcode').value,
     };
 
     stripe.createToken(card, options).then(function(result) {
@@ -168,6 +191,10 @@ function stripeTokenHandler(token) {
 
     // Submit the form
     form.submit();
-
 }
+
+
+
+
+
 

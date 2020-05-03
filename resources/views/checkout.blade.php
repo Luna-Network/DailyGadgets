@@ -36,9 +36,9 @@
             <input class="form-row input" type="text" id="name_on_card" placeholder="Name on Card" name="name_on_card">
             <input class="form-row input" type="text" id="address" placeholder="Address" name="address">
             <input class="form-row input" type="text" id="city" placeholder="City" name="city">
-            <input class="form-row input" type="text" id="province" placeholder="Province" name="province">
+            <input class="form-row input" type="text" id="province" placeholder="Country" name="province">
             <input class="form-row input" type="text" id="postcode" placeholder="Postcode" name="postcode">
-            <div class="form-row">
+            <div class="form-row" style="margin-top: 20px">
                 <label for="card-element">
                     Credit or debit card
                 </label>
@@ -50,9 +50,13 @@
                 <div id="card-errors" role="alert"></div>
             </div>
 
+            <p class="lead font-weight-bold" style="margin-top: 20px">
+                <span>Total price to pay:</span>
+                <span class="lead">£{{$total}}</span>
+            </p>
+
             <button type="submit" class="btn btn-outline-danger btn-block my-4"> SUBMIT PAYMENT</button>
 
-            {{$total}}
         </form>
 
 

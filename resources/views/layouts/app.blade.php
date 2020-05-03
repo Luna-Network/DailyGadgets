@@ -45,24 +45,24 @@
 <header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark white scrolling-navbar">
-        <a class="navbar-brand" href="{{ route('home') }}"><img class="logo" src="{{asset('imgs/logo.png')}}"></a>
+        <a class="navbar-brand" href="/"><img class="logo" src="{{asset('imgs/logo.png')}}"></a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/shop">Shop <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" id="nav1" href="/shop">Shop <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" id="nav2" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link" id="nav3" href="/contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/news">News</a>
+                    <a class="nav-link" id="nav4" href="/news">News</a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-auto">
@@ -74,19 +74,22 @@
             </ul>
             <ul class="navbar-nav navbar-links">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('item.shoppingCart') }}">
+                    <a class="nav-link" id="nav5" href="{{ route('item.shoppingCart') }}">
                         E-cart ({{Session::has('cart') ? Session::get('cart') -> totalQty : ''}})
                     </a>
                 </li>
+                @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('getWishlist') }}">Wish List</a>
+                    <a class="nav-link"  id="nav6" href="/wishlist">Whish List</a>
                 </li>
+                @endauth
                 @guest
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <li>
+                        <a class="nav-link" id="nav7" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                     @if (Route::has('register'))
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <li><a class="nav-link" id="nav8" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                     @endif
-                    @else
+                @else
                     <div class="dropdown">
                         <button class="dropdown-toggle nav-link" type="button" id="dropdownMenu6" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
@@ -94,8 +97,10 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu6">
                             <a class="dropdown-item" href="/account">{{ __('Details') }}</a>
-                            <a class="dropdown-item" href="{{route('myOrders')}}">{{ __('Your Orders') }}</a>
-                            <a class="dropdown-item" href="#">{{ __('Admin') }}</a>
+                            <a class="dropdown-item" href="/my-orders">{{ __('Your Orders') }}</a>
+                            @if(\Illuminate\Support\Facades\Auth::user()->title == 'admin')
+                            <a class="dropdown-item" href="/admin">{{ __('Admin') }}</a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
@@ -113,11 +118,11 @@
 <!--Main Navigation-->
 
 
-    <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+<div id="app">
+    <main class="py-4">
+        @yield('content')
+    </main>
+</div>
 
 
 
@@ -130,9 +135,9 @@
 
         <h6>
             Contact Developers
-        <p>
-            <a href="mailto:simonas@inspiringinterns.com">Simonas Simonavicius</a>, <a href="mailto:info@humancode.dev">Karolis Abramovicius</a>, <a href="mailto:markas.cherry@gmail.com">Markas Vysniauskas</a>, <a href="mailto:dovydaspukinskis@gmail.com">Dovydas Pukinskis</a>
-            </h6>
+            <p>
+                <a href="mailto:simonas@inspiringinterns.com">Simonas Simonavicius</a>, <a href="mailto:info@humancode.dev">Karolis Abramovicius</a>, <a href="mailto:markas.cherry@gmail.com">Markas Vysniauskas</a>, <a href="mailto:dovydaspukinskis@gmail.com">Dovydas Pukinskis</a>
+        </h6>
         </p>
         <p>
             @Copyright all rights reserved by Daily Gadgets LTD 2020

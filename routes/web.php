@@ -15,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/item', 'ItemController@index');
 Route::get('/shop', 'ShopController@results');
+Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
 Route::post('/shop', 'ShopController@results');
 Route::get('/', 'HomepageController@index')->name('home');
+
+
+
 
 Auth::routes();
 
@@ -51,6 +55,11 @@ route::get('/my-orders', 'OrderController@userOrders') -> name('myOrders')->midd
 Route::get('/account', 'AccountController@getAccount') -> name('getAccount');
 Route::post('/account', 'AccountController@postAccount') -> name('postAccount');
 
+Route::get('/contact', 'ContactController@index');
+Route::post('/contact', 'ContactController@sendEmail');
+
+Route::get('/admin', 'AdminController@index');
+
 
 
 
@@ -66,11 +75,6 @@ Route::get('/terms-conditions', function () {
 Route::get('/about', function () {
     return view('about');
 });
-
-Route::get('/contact', function () {
-    return view('contact-us');
-});
-
 
 Route::get('/email', function () {
     return new \App\Mail\ConfirmationMail();

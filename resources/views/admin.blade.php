@@ -16,30 +16,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
-    <style>
-        .fix-page {
-            margin-top: 130px;
-            padding: 0 1%;
-        }
-        .fix-table{
-            margin: 0 auto;
-            max-width:1400px;
-        }
-        .fix-id{
-            min-width:70px !important;
-            max-width:70px !important;
-            width:70px !important;
-        }
-        .fix-buttons{
-            min-width:200px !important;
-            max-width:200px !important;
-            width:200px !important;
-        }
-        .fix-rowx{
-            display:flex;
-            flex-direction:row;
-        }
-    </style>
 </head>
 <body>
 
@@ -51,8 +27,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item ">
-                <a class="nav-link" href="/admin">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/users">Users table</a>
@@ -80,57 +56,15 @@
         </div>
     @endauth
 </nav>
-<div class="fix-page">
 
-
-
-    <table id="dtBasicExample" class="table table-striped table-bordered table-sm fix-table" cellspacing="0" width="100%">
-        <thead>
-        <tr>
-            <th class="th-sm fix-id">Id
-            </th>
-            <th class="th-sm">Name
-            </th>
-            <th class="th-sm">Email
-            </th>
-            <th class="th-sm fix-buttons">Actions
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($users as $user)
-            <tr>
-                <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td class="fix-rowx">
-                    <div class="">
-                        <a href="{{ route('users.edit', $user->id)}}">
-                            <button class="btn btn-primary btn-sm" type="submit">Edit</button>
-                        </a>
-                    </div>
-
-                    <div class="">
-                        <form action="{{ route('users.destroy', $user->id)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-
-
-
-    </table>
-
-
-
+<div style="width: 100%; display: flex; flex-direction: row; margin-top: 10%">
+    <div style="width: 50%">
+        <canvas id="myChart" style="max-width: 100%;"></canvas>
+    </div>
+    <div style="width: 50%">
+        <canvas id="horizontalBar" style="max-width: 100%;"></canvas>
+    </div>
 </div>
-
-
 
 
 
@@ -145,8 +79,76 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 <script src="{{asset('js/global.js')}}"></script>
 {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
+
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["November", "December", "January", "February", "March", "April"],
+            datasets: [{
+                label: '# of Orders',
+                data: [9, 15, 26, 43, 62, 78],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+
+    new Chart(document.getElementById("horizontalBar"), {
+        "type": "horizontalBar",
+        "data": {
+            labels: ["November", "December", "January", "February", "March", "April", "May"],
+            "datasets": [{
+                "label": "Registered users",
+                "data": [34, 56, 43, 12, 86, 23, 5],
+                "fill": false,
+                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
+                    "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",
+                    "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"
+                ],
+                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)",
+                    "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"
+                ],
+                "borderWidth": 1
+            }]
+        },
+        "options": {
+            "scales": {
+                "xAxes": [{
+                    "ticks": {
+                        "beginAtZero": true
+                    }
+                }]
+            }
+        }
+    });
+</script>
 </body>
 </html>
-
-
-

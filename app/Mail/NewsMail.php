@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ConfirmationMail extends Mailable
+class NewsMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,7 +16,6 @@ class ConfirmationMail extends Mailable
      *
      * @return void
      */
-
     public $data;
 
     public function __construct($data)
@@ -31,6 +30,6 @@ class ConfirmationMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.confirmation');
+        return $this->view('emails.news')->subject('Newsletter');
     }
 }

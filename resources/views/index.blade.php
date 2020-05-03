@@ -97,7 +97,7 @@
                         </div>
                         <!-- Button -->
                         <div class="btn-inf">
-                        <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
+                        <a type="button" href="{{'/shop/' . $mobile->id}}" style="width: 100%" class="btn btn-outline-info waves-effect">More details</a>
                         </div>
                         <div class="btn-inf">
                             <a href="{{ route('item.addToCart', ['id' => $mobile->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>
@@ -149,7 +149,7 @@
                         </div>
                         <!-- Button -->
                         <div class="btn-inf">
-                            <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
+                            <a type="button" href="{{'/shop/' . $laptop->id}}" style="width: 100%" class="btn btn-outline-info waves-effect">More details</a>
                         </div>
                         <div class="btn-inf">
                             <a href="{{ route('item.addToCart', ['id' => $laptop->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>
@@ -203,7 +203,7 @@
                         </div>
                         <!-- Button -->
                         <div class="btn-inf">
-                            <button type="button" style="width: 100%" class="btn btn-outline-info waves-effect">More details</button>
+                            <a type="button" href="{{'/shop/' . $tv->id}}" style="width: 100%" class="btn btn-outline-info waves-effect">More details</a>
                         </div>
                         <div class="btn-inf">
                             <a href="{{ route('item.addToCart', ['id' => $tv->id]) }}" type="button" style="width: 50%" class="btn btn-success"><i class="fas fa-cart-plus" style="font-size: 26px"></i></a>

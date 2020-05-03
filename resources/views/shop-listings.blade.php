@@ -13,19 +13,54 @@
 
     .greenc {
         color: #00c851;
+        text-align: center;
+
     }
 
-    .mgt {
-        margin-top: 1em;
+    .searchBar{
+        width: 20%;
+        align-self: center;
     }
 
-    .space-top {
-        margin-top: 50px;
+    .custom-select{
+        width: 20%!important;
+        align-self: center;
+    }
+
+    .brand-check{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-top: 10px;
+    }
+
+    .brand-check .display-col:first-child{
+        margin-right: 10px;
+    }
+    .brand-check .display-col:nth-child(2){
+        margin-left: 10px;
+    }
+
+    .display-col{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .brand-filter{
+        text-align: center;
+        align-self: center;
+    }
+
+    .price-max{
+        text-align: center;
     }
 
     .filter {
-        width: 100%;
-        padding: 5% 20% 0 20%;
+        width: 80%;
+        margin-top: 6%!important;
+        background-color: #f2eeed;
+        padding-bottom: 30px;
+        padding-top: 30px;
     }
 
     .pagination {
@@ -141,32 +176,36 @@
         transform: rotate(45deg);
     }
 
+    .form-filter{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        position: relative;
+    }
+
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
 
 </style>
-
-    <div class="filter main">
-
-        <div class="filter-header">
-            <div>
-                <i class="las la-filter"></i>
-            </div>
-            <div>
-                <h4 class="greenc">Filter</h4>
-            </div>
-            <div>
-                <i id="filterArrow" class="las la-angle-right"></i>
-            </div>
-        </div>
+<div style="width: 100%; display: flex;justify-content: center">
+    <div class="filter rounded mb-0">
 
         <form action="/shop" method="POST" id="filterForm">
+            <h4 class="greenc">FILTER</h4>
             @csrf
+            <div class="form-filter">
+
+            <input class="searchBar form-control mr-sm-2" type="text" placeholder="Enter keyword" name="search" value="<?php echo isset($_POST['search']) ? $_POST['search'] : '' ?>">
 
 
-            <input class="searchBar form-control mr-sm-2" type="text" placeholder="Search" name="search" value="<?php echo isset($_POST['search']) ? $_POST['search'] : '' ?>">
-
-
-            <select class="browser-default custom-select space-top" name="type">
-                <option value="any" <?php if(isset($_POST['type']) && $_POST['type'] == "any") echo "selected"; ?>>Any</option>
+            <select class="browser-default custom-select" name="type">
+                <option selected="true" disabled="disabled">Select Category</option>
+{{--                <option value="any" <?php if(isset($_POST['type']) && $_POST['type'] == "any") echo "selected"; ?>>Any</option>--}}
                 <option value="laptop" <?php if(isset($_POST['type']) && $_POST['type'] == "laptop") echo "selected"; ?>>Laptop</option>
                 <option value="pc" <?php if(isset($_POST['type']) && $_POST['type'] == "pc") echo "selected"; ?>>PC</option>
                 <option value="mobile"<?php if(isset($_POST['type']) && $_POST['type'] == "mobile") echo "selected"; ?>>Mobile</option>
@@ -177,66 +216,69 @@
 
 
 
-            <div class="space-top">
-                <div>
-                    <div>
-                        <span>BRAND</span>
-                    </div>
-                    <div>
-                        <label class="multiple">Apple
-                            <input type="checkbox" name="brand[]" value="apple" <?php if(isset($_POST['brand']) && in_array('apple',$_POST['brand'])) echo "checked='checked'"; ?>/>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="multiple">Samsung
-                            <input type="checkbox" name="brand[]" value="samsung" <?php if(isset($_POST['brand']) && in_array('samsung',$_POST['brand'])) echo "checked='checked'"; ?>/>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="multiple">Xioami
-                            <input type="checkbox" name="brand[]" value="Xioami" <?php if(isset($_POST['brand']) && in_array('Xioami',$_POST['brand'])) echo "checked='checked'"; ?>/>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="multiple">LG
-                            <input type="checkbox" name="brand[]" value="LG" <?php if(isset($_POST['brand']) && in_array('LG',$_POST['brand'])) echo "checked='checked'"; ?>/>
-                            <span class="checkmark"></span>
-                        </label>
+
+                <div class="brand-filter">
+                    <span>BRAND</span>
+                    <div class="brand-check">
+
+                        <div class="display-col">
+                            <label class="multiple">Apple
+                                <input type="checkbox" name="brand[]" value="apple" <?php if(isset($_POST['brand']) && in_array('apple',$_POST['brand'])) echo "checked='checked'"; ?>/>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="multiple">Samsung
+                                <input type="checkbox" name="brand[]" value="samsung" <?php if(isset($_POST['brand']) && in_array('samsung',$_POST['brand'])) echo "checked='checked'"; ?>/>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="display-col">
+                            <label class="multiple">Xioami
+                                <input type="checkbox" name="brand[]" value="Xioami" <?php if(isset($_POST['brand']) && in_array('Xioami',$_POST['brand'])) echo "checked='checked'"; ?>/>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="multiple">LG
+                                <input type="checkbox" name="brand[]" value="LG" <?php if(isset($_POST['brand']) && in_array('LG',$_POST['brand'])) echo "checked='checked'"; ?>/>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
 
-            <div class="mgt">
-                <div>
+
+
+            <div class="price-max">
                     <span>MAX PRICE</span>
-                </div>
-                <div>
+                <div style="padding-top: 10px">
                     <label class="solo">
-                        <input type="text" name="price" placeholder="Max price" value="<?php echo isset($_POST['price']) ? $_POST['price'] : '' ?>" />
-                        <span class="checkmark"></span>
+                        <input type="text" name="price" placeholder="£" value="<?php echo isset($_POST['price']) ? $_POST['price'] : '' ?>" />
                     </label>
                 </div>
             </div>
-
-            <div class="mgt">
+            </div>
+            <div class="buttons">
+            <div class="search-button">
                 <button type="submit" class="btn btn-outline-success btn-rounded btn-sm my-0 waves-effect waves-light">SEARCH</button>
             </div>
 
-            <br/>
-            <div class="mgt" <?php if(isset($_POST['sectors']) || (isset($_POST['salary']) && $_POST['salary'] != '0') || (isset($_POST['jobType']) && $_POST['jobType'] != "any") || isset($_POST['industries'])) echo "style='display:flex;'"; ?>>
+
+            <div class="show-all-btn" <?php if(isset($_POST['sectors']) || (isset($_POST['salary']) && $_POST['salary'] != '0') || (isset($_POST['jobType']) && $_POST['jobType'] != "any") || isset($_POST['industries'])) echo "style='display:flex;'"; ?>>
                 <a href="/shop" class="btn btn-outline-danger btn-rounded btn-sm my-0 waves-effect waves-light">SHOW ALL</a>
             </div>
-
+            </div>
 
         </form>
     </div>
+</div>
 
     <div class = "results">
         @if($totalResults == 0)
-            <div class="main centered">
-                <h3>Sorry, no jobs found</h3>
+            <div class="centered" style="margin-top: 40px; margin-bottom: 40px; text-align: center">
+                <h3>Sorry, no products found</h3>
             </div>
         @else
-            <div class="main centered">
+            <div class="centered" style="margin-top: 40px; margin-bottom: 40px; text-align: center">
                 <h5>Results found: {{ $totalResults }}</h5>
             </div>
         @endif
@@ -261,7 +303,9 @@
                     <p class="desc">£{{ $item-> price }}</p>
 
 
-
+                    <div class="btn-inf">
+                        <a type="button" href="{{'/shop/' . $item->id}}" style="width: 100%" class="btn btn-outline-info waves-effect">More details</a>
+                    </div>
                     <div class="btn-inf">
                         <a href="{{ route('item.addToCart', ['id' => $item->id]) }}" type="button" style="width: 50%" class="btn btn-success waves-effect waves-light"><i class="fas fa-cart-plus" style="font-size: 26px" aria-hidden="true"></i></a>
                         <a href="{{ route('addToWish', ['id' => $item->id]) }}" type="button" style="width: 50%" class="btn btn-danger waves-effect waves-light"><i class="fas fa-heart" style="font-size: 26px" aria-hidden="true"></i></a>

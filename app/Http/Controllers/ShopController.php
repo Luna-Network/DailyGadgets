@@ -133,4 +133,13 @@ class ShopController extends Controller {
 
         return view('shop-listings', compact('items', 'totalResults', 'page'));
     }
+
+    public function show($id){
+        $item = Item::where('id', $id)->firstOrFail();
+
+        $imagesArray = explode(';', $item['images']);
+        $imagesArray = array_filter($imagesArray);
+
+        return view('item-inside', compact('item', 'imagesArray'));
+    }
 }

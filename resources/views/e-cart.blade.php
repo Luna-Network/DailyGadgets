@@ -21,8 +21,8 @@
                     <tr>
                         <td data-th="Product">
                             <div class="row">
-                                <div class="col-sm-2 hidden-xs"><img src="{{ substr($item['item']['images'], 0, strpos($item['item']['images'], ';')) }}" width="100" height="100" alt="product image" class="img-responsive" /></div>
-                                <div class="col-sm-10 product">
+                                <div class="col-sm-4 hidden-xs"><img src="{{ substr($item['item']['images'], 0, strpos($item['item']['images'], ';')) }}" width="100" height="100" alt="product image" class="img-responsive" /></div>
+                                <div class="col-sm-8 product">
                                     <h4 class="nomargin">{{ $item['item']['title'] }}</h4>
                                     <p>{{ \Illuminate\Support\Str::limit($item['item']['description'], $limit = 100, $end = '...') }}</p>
                                 </div>
@@ -49,7 +49,7 @@
                     <td><a href="{{ $lastURL ?? '/' }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                     <td colspan="2" class="hidden-xs"></td>
                     <td class="hidden-xs text-center"><strong>Total £{{ $totalPrice }}</strong></td>
-                    <td><a href="{{ route('payment.index') }}" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    <td><a  href="{{ route('payment.index') }}" class="btn btn-success">Checkout</a></td>
                 </tr>
                 </tfoot>
             </table>

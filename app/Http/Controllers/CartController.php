@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\QtyNotificationMail;
 use App\Order;
 use App\Cart;
 use App\Item;
@@ -32,17 +33,30 @@ class CartController extends Controller {
 
 
 
+        $nameCard = $request->input('name_on_card');
+        $address = $request->input('address');
+        $city = $request->input('city');
+        $country = $request->input('province');
+        $postcode = $request->input('postcode');
+
+
+
         $total = $cart->totalPrice;
 
 
         try{
             $charge = Stripe::charges()->create([
                 'amount' => $total,
-                'currency' => 'CAD',
+                'currency' => 'GBP',
                 'source' => $request->stripeToken,
                 'description' => 'Order',
                 'receipt_email' => $request->email,
                 'metadata' => [
+                    'nameOnCard' => $nameCard,
+                    'address' => $address,
+                    'city' => $city,
+                    'country' => $country,
+                    'postcode' => $postcode,
 
                 ],
             ]);
@@ -55,7 +69,7 @@ class CartController extends Controller {
 
     public function getConfirmation(){
 
-        //$this->sendConfirmationEmail();
+        $this->sendConfirmationEmail();
 
         if (!Session::has('cart')) {
             return view('e-cart');
@@ -70,7 +84,8 @@ class CartController extends Controller {
             Order::create(['user_id'=>$user->id, 'item_id'=>$key, 'qty'=>$cartItem['qty'], 'totalPrice' => $cartItem['price']]);
 
             if(Item::whereId($key)->first()->in_stock < 4) {
-                //SEND EMAIL THAT STOCK IS LOW
+                $data = Item::whereId($key)->first()->id;
+                $this->lowQty($data);
             }
 
         }
@@ -168,12 +183,30 @@ class CartController extends Controller {
             }
         }
 
+
         $total = $cart->totalPrice;
         return view('checkout', ['total' => $total]);
     }
 
     public function sendConfirmationEmail(){
+        if (!Session::has('cart')) {
+            return view('e-cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+
         $user = Auth::user();
-        Mail::to($user->email)->send(new ConfirmationMail());
+        $data = [
+            'totalQty' => $cart->totalQty,
+            'totalPrice' => $cart->totalPrice,
+            'items' => $cart->items,
+        ];
+        Mail::to($user->email)->send(new ConfirmationMail($data));
+    }
+
+    public function lowQty($data){
+
+        Mail::to('dailygadgets@gmail.com')->send(new QtyNotificationMail($data));
     }
 }

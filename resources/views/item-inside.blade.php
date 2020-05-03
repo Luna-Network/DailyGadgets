@@ -1,372 +1,153 @@
-<html>
-    <head>
-        <title>
-            Daily Gadgets
-        </title>
-        <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans Condensed' rel='stylesheet'>
-        <link rel="stylesheet" href="css/main.css" type="text/css">
-    </head>
-    <body>
+@extends('layouts.app')
 
-        <!-- MOBILE NAVIGATION -->
-        <ul id="mobile-nav">
-
-            <!-- SEARCH BAR  -->
-            <form type="submit" action="#" class="search">
-                <input type="text" name="seachbar" class="searchbar" placeholder="looking for">
-                <input type="submit" value="search" class="searchgo">
-            </form>
-
-            <li class="option">
-                Shop
-            </li>
-            <li class="option">
-                Today's special
-            </li>
-            <li class="option">
-                Sales
-            </li>
-            <li class="option">
-                Account
-            </li>
-            <li class="option">
-                E-cart
-            </li>
-            <li class="option">
-                Wish list
-            </li>
-        </ul>
-
-        <div id="top-bar">
-            <div id="logo">
-                <img src="./imgs/logo.png">
-            </div>
-            <div class="menu" onclick="menu_toggle()">
-                <div class="hamburger"></div>
-                <div class="hamburger"></div>
-                <div class="hamburger"></div>
-            </div>
-        </div>
+@section('content')
 
 
-        <!-- HEADER NAVIGATION -->
-        <section class="header-nav">
-            <!-- LEFT SIDE NAVIGATION -->
-            <div class="row">
-                <div id="logo">
-                    <a href="{{ url('/') }}">
-                        <img src="./imgs/logo.png">
-                    </a>
+    <main class="mt-5 pt-4">
+        <div class="container dark-grey-text mt-5">
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-4">
+
+                    <img src="{{$imagesArray['0']}}" class="img-fluid" alt="">
+
                 </div>
-            </div>
+                <!--Grid column-->
 
+                <!--Grid column-->
+                <div class="col-md-6 mb-4">
 
-            <div class="row">
-            <div class="side">
-                <div class="header-button" onclick="header_menu()">
-                    Filters
-                </div>
-
-                <div class="dropdown">
-                    Category
-
-                    <div class="to-drop">
-                        <div class="drop-contain">  </div>
-                        <li>Computers</li>
-                        <li>Laptops</li>
-                        <li>Phones</li>
-                        <li>Tablets</li>
+                    <!--Content-->
+                    <div class="mb-3">
+                        <a href="">
+                            <span class="badge blue mr-1">{{$item['type']}}</span>
+                        </a>
                     </div>
-                </div>
+                    <h4 class="title">{{$item['title']}}</h4>
+                    <div class="p-4">
 
-                <div class="dropdown">
-                    Sales
-                    <div class="to-drop">
-                        <div class="drop-contain"></div>
-                        <li>Computers</li>
-                        <li>Laptops</li>
-                        <li>Phones</li>
-                        <li>Tablets</li>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEARCH BAR  -->
-            <div class="side">
-                <form type="submit" action="#" class="search">
-                    <input type="text" name="seachbar" class="searchbar" placeholder="looking for">
-                    <input type="submit" value="search" class="searchgo">
-                </form>
-            </div>
-
-
-            <!-- RIGHT SIDE NAVIGATION -->
-            <div class="side">
-                <div class="header-button" onclick="account_menu()">
-                    Account
-                </div>
-
-                <div class="header-button">
-                    E-cart
-                </div>
-
-                <div class="header-button">
-                    Wish list
-                </div>
-            </div>
-            </div>
-        </section>
-
-        <!-- SLIDE OUT MENUS -->
-        <ul id="header-menu">
-            <form type="submit" action="#" id="filters">
-                <li class="option close" onclick="header_menu()">
-                    <img src="imgs/arrow-left.png">
-                </li>
-                <li class="option">
-                    Price <input type="number" placeholder="£">
-                </li>
-                <li class="option">
-                    Brand
-                    <select name="brand">
-                        <option name="all" default>
-                            All Brands
-                        </option>
-                        <option name="apple">
-                            Apple
-                        </option>
-                        <option name="samsung">
-                            Samsung
-                        </option>
-                    </select>
-                </li>
-                <li class="option">
-                    Screen Size
-                    <select name="size">
-                        <option name="all" default>
-                            All Sizes
-                        </option>
-                        <option name="13">
-                            13 Inch
-                        </option>
-                        <option name="15">
-                            15 Inch
-                        </option>
-                        <option name="17">
-                            17 Inch
-                        </option>
-                    </select>
-                </li>
-                <li class="option">
-                    Condition
-                    <select name="condition">
-                        <option name="all" default>
-                            All Conditions
-                        </option>
-                        <option name="new">
-                            Brand New
-                        </option>
-                        <option name="used">
-                            Used
-                        </option>
-                        <option name="parts">
-                            Parts Only
-                        </option>
-                    </select>
-                </li>
-                <li class="option">
-                    <input type="submit" value="SEARCH">
-                </li>
-            </form>
-        </ul>
-
-        <ul id="account-menu" >
-            <li class="option close" onclick="account_menu()" style="left: 0; right: unset;">
-                <img src="imgs/arrow-left.png" style="transform: rotate(0deg)">
-            </li>
-            <li class="option">
-                Acount details
-            </li>
-        </ul>
-
-
-        <!-- Advert line  -->
-        <section class="advert">
-        </section>
-
-
-        <section class="main">
-            <div class="section-title">
-                <div class="half-under">
-                    Single item info
-                </div>
-            </div>
-            <div class="row f-start">
-                <div class="s2 no-bg">
-                    <div class="column">
-                    <div class="showcase-item">
-                        <img src="imgs/phone1.JPG">
-                    </div>
-
-                    <div class="img-container">
-                        <div class="row">
-                            <div class="img-holder">
-                                <img src="imgs/phone2.JPG">
-                            </div>
-                            <div class="img-holder">
-                                <img src="imgs/phone3.JPG">
-                            </div>
-                            <div class="img-holder">
-                                <img src="imgs/phone2.JPG">
-                            </div>
-                            <div class="img-holder">
-                                <img src="imgs/phone1.JPG">
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-- Item info -->
-                <div class="s1 no-shadow no-bg">
-                    <div class="column">
-                        <div class="column">
-                            <div class="item-tdesc">
-                                Item Description
-                            </div>
-                        </div>
-                        <br/><br/><br/>
-                        <div class="column">
-                            <div class="s-name">
-                                <p class="header-text">
-                                    Model
-                                </p>
-                                <div class="s-desc">
-                                    <p>
-                                        iPhone X
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column mg-top">
-                            <div class="s-name">
-                                <p class="header-text">
-                                    Storage
-                                </p>
-                                <div class="s-desc">
-                                    <p>
-                                        64 GB
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column mg-top">
-                            <div class="s-name">
-                                <p class="header-text">
-                                    Screen Size
-                                </p>
-                                <div class="s-desc">
-                                    <p>
-                                        9.6 Inch
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column mg-top">
-                            <div class="s-name">
-                                <p class="header-text">
-                                    Color
-                                </p>
-                                <div class="s-desc">
-                                    <p>
-                                        Space Grey
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column mg-top">
-                            <div class="s-name">
-                                <p class="header-text">
-                                    Description
-                                </p>
-                                <div class="s-desc">
-                                    <p>
-                                        AS NIASNI INDAN IASIN DIANS INASN IASDNIANSDIN AI ANISDIA NNIAS DIAIS
-                                        ASDANSDAS IASDNAI SDASIN DNIASNID AI SDINA INSDNASDINNAS DIAN SIDNIAS DNIASDN
-                                        ASIDN AI ANSD IASNIDAI SIDINAS ID NIASDN NIASNIA SI
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="price-row">
-                            <div class="item-price">
-                                £329
-                            </div>
-                            <div class="to-basket">
-                                <form type="submit" action="#" class="add-basket">
-                                    <input type="number" name="quantity" value="1" required>
-                                    <div class="qti">QTI</div>
-                                    <input type="submit" value="Add to basket">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="s3 no-bg no-shadow">
-                    <div class="column">
-                        <div class="row">
-                            <p class="section-title">
-                                Suggested items
+                        @if(!empty($item['price']))
+                            <p class="lead font-weight-bold">
+                                <span>Price:</span>
+                                <span class="lead">£{{$item['price']}}</span>
                             </p>
-                        </div>
+                        @endif
+                        @if(!empty($item['brand']))
+                        <p class="lead font-weight-bold">
+                            <span>Brand:</span>
+                            <span class="lead">{{$item['brand']}}</span>
+                        </p>
+                        @endif
+                            @if(!empty($item['dimensions']))
+                                <p class="lead font-weight-bold">
+                                    <span>Dimensions:</span>
+                                    <span class="lead">{{$item['dimensions']}}</span>
+                                </p>
+                            @endif
+                            @if(!empty($item['processor']))
+                                <p class="lead font-weight-bold">
+                                    <span>Processor:</span>
+                                    <span class="lead">{{$item['processor']}}</span>
+                                </p>
+                            @endif
+                            @if(!empty($item['os']))
+                                <p class="lead font-weight-bold">
+                                    <span>OS:</span>
+                                    <span class="lead">{{$item['os']}}</span>
+                                </p>
+                            @endif
+                            @if(!empty($item['storage_capacity']))
+                                <p class="lead font-weight-bold">
+                                    <span>Storage capacity:</span>
+                                    <span class="lead">{{$item['storage_capacity']}}</span>
+                                </p>
+                            @endif
+                            @if(!empty($item['colour']))
+                                <p class="lead font-weight-bold">
+                                    <span>Color:</span>
+                                    <span class="lead">{{$item['colour']}}</span>
+                                </p>
+                            @endif
+                            @if(!empty($item['camera']))
+                                <p class="lead font-weight-bold">
+                                    <span>Camera:</span>
+                                    <span class="lead">{{$item['camera']}}</span>
+                                </p>
+                            @endif
 
-                        <div class="row">
-                            <div class="img-holder">
-                                <img src="imgs/phone2.JPG">
+
+
+
+                            <div class="btn-inf">
+                                <a href="{{ route('item.addToCart', ['id' => $item->id]) }}" type="button" style="width: 50%" class="btn btn-success waves-effect waves-light"><i class="fas fa-cart-plus" style="font-size: 26px" aria-hidden="true"></i></a>
+                                <a href="{{ route('addToWish', ['id' => $item->id]) }}" type="button" style="width: 50%" class="btn btn-danger waves-effect waves-light"><i class="fas fa-heart" style="font-size: 26px" aria-hidden="true"></i></a>
                             </div>
-                            <div class="img-holder">
-                                <img src="imgs/phone3.JPG">
-                            </div>
-                            <div class="img-holder">
-                                <img src="imgs/phone2.JPG">
-                            </div>
-                            <div class="img-holder">
-                                <img src="imgs/phone1.JPG">
-                            </div>
-                        </div>
+
                     </div>
-                </div>
-        </section>
-
-
-        <section class="footer">
-            <div class="row">
-                <div class="clickable">
+                    <!--Content-->
 
                 </div>
-            </div>
-            <div class="row">
-                <p><b>
-                    Developers:
-                </p></b>
-                <p>
-                    Front-End --> Karolis Abramovicius (Client), Dovydas Pukinskis (Admin)
-                </p>
-                <p>
-                    Back-End --> Simonas Stankevicius, Markas Visniauskas
-                </p>
-            </div>
-            <div class="row">
-                @Copyright all rights reserved by Daily Gadgets LTD 2020
-            </div>
-        </section>
+                <!--Grid column-->
 
-        <script src="js/global.js"></script>
-    </body>
-</html>
+            </div>
+            <!--Grid row-->
+
+            <hr>
+
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-md-12 text-center">
+
+                    <h4 class="my-4 h4">Additional information</h4>
+
+                    <p>{{$item['description']}}</p>
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <!--Grid row-->
+            <div class="row wow fadeIn" style="margin-top: 100px; margin-bottom: 50px">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4">
+
+                    <img src="{{$imagesArray['0']}}" class="img-fluid" alt="">
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <img src="{{$imagesArray['1']}}" class="img-fluid" alt="">
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <img src="{{$imagesArray['2']}}" class="img-fluid" alt="">
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+        </div>
+    </main>
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+
+    </script>
+    @endsection
